@@ -1,115 +1,140 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function AboutUs() {
   return (
-    <section className="relative overflow-hidden bg-white py-28 text-black">
-      {/* Decorative background */}
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute left-0 top-1/2 h-[400px] w-[400px] -translate-y-1/2 rounded-full bg-fgGreen/10 blur-[120px]" />
-        <div className="absolute right-0 top-20 h-[300px] w-[300px] rounded-full bg-fgBlue/10 blur-[120px]" />
-      </div>
-
-      <div className="relative mx-auto max-w-7xl px-6">
-        <div className="grid grid-cols-1 gap-20 lg:grid-cols-2 lg:items-center">
-          
+    <section className="relative overflow-hidden bg-zinc-100 py-28 lg:py-40">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-2 lg:gap-24">
           {/* LEFT – TEXT CONTENT */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
-          >
-            <span className="inline-block rounded-full border border-black/10 px-4 py-1 text-sm text-black/60">
-              Quiénes Somos
-            </span>
-
-            <h2 className="mt-6 text-4xl font-extrabold leading-tight md:text-5xl">
-              Publicidad que construye
-              <span className="block bg-gradient-to-r from-fgGreen to-fgBlue bg-clip-text text-transparent">
-                marcas visibles y memorables
+          <div className="order-2 lg:order-1">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, margin: "-100px" }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+            >
+              <span className="inline-block rounded-full bg-[#009846]/10 px-5 py-2 text-sm font-medium text-[#009846]">
+                Quiénes Somos
               </span>
-            </h2>
 
-            <p className="mt-6 max-w-xl text-lg text-black/70">
-              <strong>FG GO PUBLICIDAD S.A.C.</strong> es una empresa con más de
-              <strong> 25 años de experiencia</strong> en el rubro de la publicidad
-              interior y exterior. Creamos soluciones visuales de alto impacto,
-              combinando tecnología, diseño y precisión en cada proyecto.
-            </p>
+              <h2 className="mt-8 text-5xl font-black leading-tight md:text-6xl lg:text-7xl">
+                Publicidad que construye
+                <br />
+                <span className="bg-gradient-to-r from-[#009846] via-[#009846] to-[#0033A0] bg-clip-text text-transparent">
+                  marcas visibles y memorables
+                </span>
+              </h2>
+            </motion.div>
 
-            <p className="mt-4 max-w-xl text-lg text-black/70">
-              Nos caracterizamos por ofrecer <strong>garantía, calidad y
-              puntualidad</strong>, respaldados por maquinaria de última
-              generación y un equipo altamente capacitado.
-            </p>
-          </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, margin: "-100px" }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="mt-10 space-y-6 text-lg text-black/70"
+            >
+              <p>
+                <strong className="text-black">FG GO PUBLICIDAD S.A.C.</strong> cuenta con{" "}
+                <strong className="text-[#0033A0]">más de 25 años de experiencia</strong> creando soluciones de publicidad interior y exterior de alto impacto.
+              </p>
+              <p>
+                Nos distinguimos por nuestra <strong className="text-[#009846]">garantía, calidad y puntualidad</strong>, respaldadas por maquinaria de última generación y un equipo altamente capacitado.
+              </p>
+            </motion.div>
+          </div>
 
-          {/* RIGHT – MEDIA MOCKUP */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="relative"
-          >
-            {/* Main media container */}
-            <div className="relative aspect-[4/5] overflow-hidden rounded-3xl border border-black/10 bg-black/5">
-              {/* 
-                👉 Reemplaza esto por:
-                - <Image />
-                - <video />
-              */}
-              <div className="flex h-full w-full items-center justify-center text-sm text-black/40">
-                Imagen / Video principal
+          {/* RIGHT – VISUAL MEDIA (con overlapping flotante y animaciones 3D) */}
+          <div className="order-1 lg:order-2 relative h-[500px] lg:h-[700px]">
+            <motion.div
+              initial={{ opacity: 0, x: 100, rotate: -5 }}
+              whileInView={{ opacity: 1, x: 0, rotate: 0 }}
+              viewport={{ once: false, margin: "-100px" }}
+              transition={{ duration: 1, ease: "easeOut" }}
+              className="absolute inset-0"
+            >
+              {/* Video principal (fondo) */}
+              <div className="absolute left-0 top-10 w-full max-w-lg overflow-hidden rounded-3xl shadow-2xl ring-1 ring-black/5">
+                <video
+                  src="/vid/4x4.mp4"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  className="h-full w-full object-cover"
+                />
               </div>
-            </div>
 
-            {/* Floating media card */}
-            <div className="absolute -bottom-6 -left-6 w-64 rounded-2xl border border-black/10 bg-white p-4 shadow-xl">
-              <div className="aspect-video rounded-lg bg-black/5 flex items-center justify-center text-xs text-black/40">
-                Video / Imagen secundaria
-              </div>
-            </div>
-          </motion.div>
+              {/* Imagen flotante superpuesta (delante del video) */}
+              <motion.div
+                initial={{ opacity: 0, y: 80, rotate: 8 }}
+                whileInView={{ opacity: 1, y: 0, rotate: 3 }}
+                viewport={{ once: false }}
+                transition={{ duration: 1.2, delay: 0.4 }}
+                className="absolute -bottom-4 right-0 w-full max-w-md overflow-hidden rounded-3xl shadow-2xl ring-1 ring-black/10"
+              >
+                <Image
+                  src="/img/letrr.png"
+                  alt="Letrero volumétrico iluminado - FG GO Publicidad"
+                  width={800}
+                  height={600}
+                  className="h-full w-full object-cover"
+                />
+                {/* Overlay sutil para profundidad */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+              </motion.div>
+
+              {/* Elemento decorativo flotante (opcional: hoja eco o forma abstracta) */}
+              <motion.div
+                animate={{ y: [0, -25, 0] }}
+                transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
+                className="absolute -left-28 bottom-10 text-8xl opacity-70"
+              >
+                🌿
+              </motion.div>
+            </motion.div>
+          </div>
         </div>
 
-        {/* STATS / HIGHLIGHTS */}
+        {/* STATS / HIGHLIGHTS – Modernos y animados */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 60 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2, duration: 0.6 }}
-          className="mt-24 grid grid-cols-1 gap-8 md:grid-cols-3"
+          viewport={{ once: false, margin: "-100px" }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="mt-32 grid grid-cols-1 gap-10 md:grid-cols-3"
         >
           {[
             {
               value: "25+",
               title: "Años de experiencia",
-              desc: "Trayectoria sólida en publicidad interior y exterior.",
+              desc: "Trayectoria consolidada en publicidad de alto impacto.",
             },
             {
               value: "Tecnología",
-              title: "Maquinaria moderna",
-              desc: "Equipos de última generación para máxima calidad visual.",
+              title: "de punta",
+              desc: "Maquinaria de última generación para resultados premium.",
             },
             {
               value: "Asesoría",
-              title: "Especializada",
-              desc: "Acompañamiento experto en cada etapa del proyecto.",
+              title: "personalizada",
+              desc: "Acompañamiento experto desde el diseño hasta la instalación.",
             },
           ].map((item, i) => (
-            <div
+            <motion.div
               key={i}
-              className="rounded-3xl border border-black/10 bg-white p-8 transition hover:-translate-y-1 hover:shadow-xl"
+              whileHover={{ y: -10, scale: 1.03 }}
+              transition={{ type: "spring", stiffness: 300 }}
+              className="group rounded-3xl bg-white p-10 text-center shadow-lg ring-1 ring-black/5 transition-all hover:shadow-2xl"
             >
-              <span className="text-4xl font-extrabold text-fgGreen">
+              <div className="text-5xl font-black text-[#009846] group-hover:text-[#0033A0] transition-colors">
                 {item.value}
-              </span>
-              <h3 className="mt-4 text-lg font-semibold">{item.title}</h3>
-              <p className="mt-2 text-black/60">{item.desc}</p>
-            </div>
+              </div>
+              <h3 className="mt-6 text-2xl font-bold text-black">{item.title}</h3>
+              <p className="mt-4 text-black/60">{item.desc}</p>
+            </motion.div>
           ))}
         </motion.div>
       </div>

@@ -44,7 +44,7 @@ export default function EcoFriendly() {
 
       particles.forEach((p) => {
         p.y += p.speed; // Movimiento hacia abajo (como hojas cayendo)
-        p.x += Math.sin(p.angle) * 0.5; // Oscilación sutil
+        p.x += Math.sin(p.angle) * 0.8; // Oscilación sutil
 
         if (p.y > canvas.height) {
           p.y = 0;
@@ -97,7 +97,7 @@ export default function EcoFriendly() {
           initial={{ opacity: 0, y: -50 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 1.2 }}
-          className="text-5xl md:text-6xl font-black text-center mb-12 leading-tight"
+          className="text-5xl md:text-6xl font-black text-center leading-tight"
         >
           <span className="text-[#0033A0]">Nuestro Compromiso</span>{' '}
           <span className="text-[#009846]">Ecológico</span>
@@ -138,7 +138,7 @@ export default function EcoFriendly() {
               href="#contacto"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="inline-block px-10 py-4 bg-[#009846] text-white text-xl font-semibold rounded-full shadow-lg hover:bg-[#009846]/90 transition"
+              className="inline-block px-10 py-4 bg-[#009846] text-white text-xl font-semibold w-[70%] rounded-full shadow-lg hover:bg-[#009846]/90 transition"
             >
               Descubre cómo podemos hacer tu publicidad más verde
             </motion.a>
@@ -153,21 +153,11 @@ export default function EcoFriendly() {
               className="absolute inset-0 bg-gradient-to-r from-[#009846]/20 to-[#0033A0]/20 rounded-full blur-3xl opacity-50"
             />
 
-            {/* Imagen principal (reemplaza: foto de tinta ecológica o impresión verde) */}
-            <motion.div
-              variants={itemVariants}
-              className="absolute top-0 left-0 w-full md:w-4/5 rounded-3xl overflow-hidden shadow-2xl border-4 border-[#009846]/50"
-            >
-              <img
-                src="/images/tu-impresion-ecologica.jpg" // ← REEMPLAZA: Foto de impresora con tinta eco o publicidad en naturaleza
-                alt="Impresión con tintas ecológicas"
-                className="w-full h-full object-cover"
-              />
-            </motion.div>
+           
 
             {/* Icono flotante 1: Hoja ecológica con rotación sutil */}
             <motion.div
-              initial={{ opacity: 0, rotate: -10 }}
+              initial={{ opacity: 0, rotate: -2 }}
               animate={inView ? { opacity: 1, rotate: 10 } : {}}
               transition={{ duration: 2, repeat: Infinity, repeatType: 'reverse', ease: 'easeInOut' }}
               className="absolute bottom-10 left-10 text-9xl text-[#009846] opacity-30"
@@ -175,25 +165,15 @@ export default function EcoFriendly() {
               🍃
             </motion.div>
 
-            {/* Imagen secundaria (reemplaza: equipo recolectando residuos o certificado eco) */}
-            <motion.div
-              variants={itemVariants}
-              className="absolute bottom-0 right-0 w-3/5 rounded-3xl overflow-hidden shadow-2xl border-4 border-[#0033A0]/50"
-            >
-              <img
-                src="/images/tu-certificado-eco.jpg" // ← REEMPLAZA: Certificado ecológico o proceso reciclaje
-                alt="Certificación ecológica"
-                className="w-full h-full object-cover"
-              />
-            </motion.div>
+           
 
             {/* Video placeholder (reemplaza: video de impresión eco o animación naturaleza) */}
             <motion.div
               variants={itemVariants}
-              className="absolute top-1/3 right-1/4 w-2/5 rounded-3xl overflow-hidden shadow-2xl"
+              className="absolute top-1/6 w-full rounded-3xl overflow-hidden shadow-2xl"
             >
               <video
-                src="/videos/tu-video-eco.mp4" // ← REEMPLAZA: Video de tintas eco en acción (autoplay muted loop)
+                src="/vid/log-veg.mp4" // ← REEMPLAZA: Video de tintas eco en acción (autoplay muted loop)
                 autoPlay
                 muted
                 loop

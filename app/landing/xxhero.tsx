@@ -14,7 +14,6 @@ export default function XxHero() {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
-  // Calculamos desplazamiento parallax basado en posición del mouse
   const parallaxOffset = (intensity: number) => ({
     x: (mousePosition.x - window.innerWidth / 2) * intensity,
     y: (mousePosition.y - window.innerHeight / 2) * intensity,
@@ -22,86 +21,12 @@ export default function XxHero() {
 
   return (
     <section className="relative h-screen overflow-hidden bg-gray-900">
-      {/* Fondo con grid de imágenes parallax */}
-      <div className="absolute inset-0 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-8 scale-110">
-        {/* Imagen 1 - Valla nocturna */}
-        <motion.div
-          style={parallaxOffset(0.02)}
-          className="relative rounded-2xl overflow-hidden shadow-2xl"
-        >
-          <img
-            src="https://thumbs.dreamstime.com/b/large-illuminated-billboard-emits-warm-glow-amid-rainy-urban-landscape-city-skyscrapers-loom-background-reflecting-358702892.jpg"
-            alt="Valla publicitaria iluminada de noche"
-            className="w-full h-full object-cover"
-          />
-        </motion.div>
-
-        {/* Imagen 2 - Letras 3D */}
-        <motion.div
-          style={parallaxOffset(0.04)}
-          className="relative rounded-2xl overflow-hidden shadow-2xl md:col-span-1 lg:row-span-2"
-        >
-          <img
-            src="https://image360.com/assets/live/46/1079/6797/lacrosse_illuminated-channel-letters.jpg?autorotate=true&width=1200"
-            alt="Letras volumétricas iluminadas"
-            className="w-full h-full object-cover"
-          />
-        </motion.div>
-
-        {/* Imagen 3 - Bus revestido */}
-        <motion.div
-          style={parallaxOffset(0.03)}
-          className="relative rounded-2xl overflow-hidden shadow-2xl"
-        >
-          <img
-            src="https://contravision.com/wp-content/uploads/2019/11/Pepsi-Bus-WB-40-AUS-2-1024x685.jpg"
-            alt="Revestimiento móvil en bus"
-            className="w-full h-full object-cover"
-          />
-        </motion.div>
-
-        {/* Imagen 4 - Publicidad creativa */}
-        <motion.div
-          style={parallaxOffset(0.05)}
-          className="relative rounded-2xl overflow-hidden shadow-2xl lg:col-span-2"
-        >
-          <img
-            src="https://assets.hongkiat.com/uploads/creative-billboard-advertisements/belt-up-lines-width-1500px.jpg"
-            alt="Publicidad exterior creativa"
-            className="w-full h-full object-cover"
-          />
-        </motion.div>
-
-        {/* Más imágenes para llenar el grid (puedes agregar cuantas quieras) */}
-        <motion.div
-          style={parallaxOffset(0.02)}
-          className="relative rounded-2xl overflow-hidden shadow-2xl"
-        >
-          <img
-            src="https://thumbs.dreamstime.com/b/neon-city-street-night-blank-digital-billboard-pink-blue-glowing-screen-urban-road-wet-asphalt-reflects-colorful-lights-408131119.jpg"
-            alt="Billboard digital nocturno"
-            className="w-full h-full object-cover"
-          />
-        </motion.div>
-
-        <motion.div
-          style={parallaxOffset(0.06)}
-          className="relative rounded-2xl overflow-hidden shadow-2xl md:row-span-2"
-        >
-          <img
-            src="https://contravision.com/wp-content/uploads/2019/11/Pepsi-Bus-WB-40-AUS-1-1024x686.jpg"
-            alt="Bus con publicidad full wrap"
-            className="w-full h-full object-cover"
-          />
-        </motion.div>
-      </div>
-
       {/* Overlay degradado con tus colores corporativos */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-950/80 via-transparent to-green-950/80" />
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-950/80 via-transparent to-green-800/90" />
 
       {/* Contenido principal */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6">
-        {/* Logo (reemplaza con tu logo real) */}
+   
         <motion.div
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}

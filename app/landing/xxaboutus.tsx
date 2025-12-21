@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { useInView } from 'react-intersection-observer';
 
 export default function XxAboutUs() {
@@ -41,7 +42,7 @@ export default function XxAboutUs() {
   ];
 
   return (
-    <section id="nosotros" className="py-20 lg:py-32 bg-gradient-to-b from-white to-gray-50 overflow-hidden">
+    <section id="nosotros" className="py-20 lg:py-32 bg-zinc-100 overflow-hidden">
       <div className="container mx-auto px-6 max-w-7xl">
         <motion.h2
           initial={{ opacity: 0, y: -30 }}
@@ -97,13 +98,15 @@ export default function XxAboutUs() {
               initial={{ opacity: 0, x: 100 }}
               animate={inView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 1 }}
-              className="absolute top-0 right-0 w-full md:w-4/5 rounded-3xl overflow-hidden shadow-2xl"
+              className="absolute top-0 right-0 w-full rounded-3xl overflow-hidden shadow-2xl"
             >
-              <img
-                src="/images/tu-valla-principal.jpg" // ← REEMPLAZA con tu mejor foto de valla o letrero nocturno
-                alt="Valla publicitaria impactante - FG GO"
-                className="w-full h-full object-cover"
-              />
+              <Image
+                              src="/img/neon.jpg"
+                              alt="Letrero volumétrico iluminado - FG GO Publicidad"
+                              width={800}
+                              height={600}
+                              className="h-full w-full object-cover"
+                            />
             </motion.div>
 
             {/* Imagen secundaria (ej: letras volumétricas) */}
@@ -113,11 +116,13 @@ export default function XxAboutUs() {
               transition={{ duration: 1, delay: 0.3 }}
               className="absolute bottom-0 left-0 w-3/5 rounded-3xl overflow-hidden shadow-2xl border-8 border-white"
             >
-              <img
-                src="/images/tus-letras-volumetricas.jpg" // ← REEMPLAZA
-                alt="Letras volumétricas iluminadas"
-                className="w-full h-full object-cover"
-              />
+               <Image
+                              src="/img/vinilcar.jpg"
+                              alt="Letrero volumétrico iluminado - FG GO Publicidad"
+                              width={800}
+                              height={600}
+                              className="h-full w-full object-cover"
+                            />
             </motion.div>
 
             {/* Imagen terciaria (ej: vehículo revestido o maquinaria) */}
@@ -125,16 +130,18 @@ export default function XxAboutUs() {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={inView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 1, delay: 0.6 }}
-              className="absolute top-1/3 left-1/4 w-2/5 rounded-3xl overflow-hidden shadow-2xl border-8 border-white"
+              className="absolute -top-16 left-100 w-[50%] rounded-3xl overflow-hidden shadow-2xl border-8 border-white"
             >
-              <img
-                src="/images/tu-revestimiento-bus.jpg" // ← REEMPLAZA
-                alt="Revestimiento móvil en bus"
-                className="w-full h-full object-cover"
-              />
+               <Image
+                              src="/img/letnom.jpg"
+                              alt="Letrero volumétrico iluminado - FG GO Publicidad"
+                              width={800}
+                              height={600}
+                              className="h-full w-full object-cover"
+                            />
             </motion.div>
 
-            {/* Placeholder para VIDEO (ej: timelapse de instalación o maquinaria) */}
+            {/* Placeholder para VIDEO (ej: timelapse de instalación o maquinaria)
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               animate={inView ? { opacity: 1, y: 50 } : {}}
@@ -142,7 +149,7 @@ export default function XxAboutUs() {
               className="absolute bottom-20 right-10 w-3/5 rounded-3xl overflow-hidden shadow-2xl"
             >
               <video
-                src="/videos/tu-video-maquinaria.mp4" // ← REEMPLAZA con tu video (autoplay muted loop)
+                src="/vid/log-veg.mp4" // ← REEMPLAZA con tu video (autoplay muted loop)
                 autoPlay
                 muted
                 loop
@@ -150,7 +157,7 @@ export default function XxAboutUs() {
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
-            </motion.div>
+            </motion.div> */}
           </div>
         </div>
       </div>

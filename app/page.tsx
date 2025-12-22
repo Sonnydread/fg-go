@@ -22,13 +22,12 @@ export default function Page() {
       <AboutUs />
       <XxAboutUs />
       <CoreServices />
-   
       <EcoFriendly />
       <EcoCommitment />
       <ServicesSection />
       <ContactSection />
-      <FinalCTAContact />
       <AutoScrollCarousel />
+      <FinalCTAContact />
     </>
   );
 }

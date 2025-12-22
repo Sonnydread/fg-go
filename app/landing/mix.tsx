@@ -11,6 +11,7 @@ const services = [
   { name: 'Cajas de Luz', img: 'https://i.ebayimg.com/images/g/1i4AAOSwfuBlONFF/s-l1200.jpg' }, // [image:11]
   { name: 'Letras Volumétricas', img: 'https://dms-signs.com/wp-content/uploads/2021/01/ID.ME-McLeanVA-RGB-Illuminated-ChannelLetters-5-1080x675.jpg' }, // [image:8]
   { name: 'Revestimientos Móviles', img: 'https://www.pixelwraps.com/wp-content/uploads/2023/10/full-bus-wrap.jpg' }, // [image:9]
+   { name: 'Ploteos', img: '/img/pump.png' }, 
 ];
 
 const steps = [
@@ -36,11 +37,11 @@ export default function ServicesSection() {
     <section id="servicios" className="relative py-24 lg:py-32 overflow-hidden">
       {/* Fondo fresco y ecológico con ondas futuristas */}
       <div className="absolute inset-0">
-        <img
+        {/* <img
           src="https://thumbs.dreamstime.com/b/abstract-green-tech-background-features-digital-waves-dynamic-particles-form-smooth-undulating-shapes-vibrant-hues-create-349410706.jpg" // [image:2] - Futurista verde/azul
           alt="Fondo ecológico fresco"
           className="w-full h-full object-cover"
-        />
+        /> */}
         <div className="absolute inset-0 bg-gradient-to-br from-[#0033A0]/30 via-transparent to-[#009846]/40" />
       </div>
 

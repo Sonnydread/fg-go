@@ -94,7 +94,7 @@ export default function ContactSection() {
             </motion.div>
 
             {/* Información de contacto – ultra compacta (solo icono + dato) */}
-            <motion.div
+            {/* <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.5 }}
@@ -139,7 +139,7 @@ export default function ContactSection() {
                   </a>
                 </div>
               </div>
-            </motion.div>
+            </motion.div> */}
           </div>
 
           {/* Formulario */}

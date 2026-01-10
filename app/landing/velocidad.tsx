@@ -8,6 +8,7 @@ import {
 export default function Velocidad() {
   return (
     <section className="py-28 bg-zinc-100">
+       <p className="text-red-700 ml-34 font-bold">Sección nuestros clientes</p>
         <h1 className="ml-34 pb-18 text-5xl font-semibold">Nuestros clientes</h1>
       <div className="relative"> {/* Contenedor relativo para los overlays */}
         {/* ScrollVelocityContainer principal */}

@@ -57,15 +57,16 @@ export default function CoreServices() {
           transition={{ duration: 0.9 }}
           className="text-center"
         >
+            <p className="text-red-700 font-bold">Sección Grid Corporativo</p>
           <span className="inline-block rounded-full bg-[#009846]/10 px-6 py-2 text-sm font-medium uppercase tracking-wider text-[#009846]">
             Nuestros Servicios
           </span>
-          <h2 className="mt-8 text-5xl font-black leading-tight md:text-6xl lg:text-7xl">
-            Soluciones visuales
-            <br />
-            <span className="bg-gradient-to-r from-[#009846] via-[#009846] to-[#0033A0] bg-clip-text text-transparent drop-shadow-lg">
-              de alto impacto
-            </span>
+           <h2 className="bg-linear-to-r mt-6 text-6xl font-black from-[#0033A0] via-[#37b672] to-[#009846] bg-clip-text text-transparent">
+
+  Soluciones visuales de alto impacto <br />(Ponerle un nombre al corporativo)
+
+
+          
           </h2>
         </motion.div>
 
@@ -181,59 +182,7 @@ export default function CoreServices() {
           </motion.div>
         </div>
 
-        {/* PROCESO + DIFERENCIALES – Cards con neon glow */}
-        <div className="mt-40 grid grid-cols-1 gap-16 md:grid-cols-2">
-          {/* Proceso */}
-          <motion.div
-            initial={{ opacity: 0, y: 60 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="rounded-3xl bg-gradient-to-br from-[#009846]/5 to-transparent p-10 ring-1 ring-[#009846]/20"
-          >
-            <h4 className="mb-8 text-2xl font-bold text-[#009846] drop-shadow-md">Nuestro Proceso</h4>
-            <ol className="space-y-6">
-              {processSteps.map((step, i) => (
-                <motion.li
-                  key={i}
-                  initial={{ opacity: 0, x: -40 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.15 }}
-                  className="flex items-center gap-6 text-lg"
-                >
-                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#009846] text-white font-black shadow-lg">
-                    {i + 1}
-                  </span>
-                  <span>{step}</span>
-                </motion.li>
-              ))}
-            </ol>
-          </motion.div>
-
-          {/* Diferenciales */}
-          <motion.div
-            initial={{ opacity: 0, y: 60 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.3 }}
-            className="rounded-3xl bg-gradient-to-bl from-[#0033A0]/5 to-transparent p-10 ring-1 ring-[#0033A0]/20"
-          >
-            <h4 className="mb-8 text-2xl font-bold text-[#0033A0] drop-shadow-md">¿Por qué elegirnos?</h4>
-            <ul className="space-y-6">
-              {differentials.map((diff, i) => (
-                <motion.li
-                  key={i}
-                  initial={{ opacity: 0, x: 40 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.15 }}
-                  className="flex items-center gap-6 text-lg"
-                >
-                  <span className="text-3xl text-[#0033A0]">✔</span>
-                  <span>{diff}</span>
-                </motion.li>
-              ))}
-            </ul>
-          </motion.div>
-        </div>
+      
       </div>
     </section>
   );

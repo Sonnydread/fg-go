@@ -5,8 +5,21 @@ import Image from 'next/image';
 
 export default function FinalCTAContact() {
   return (
-    <section className="relative overflow-hidden py-36 text-white">
+    <section className="relative overflow-hidden py-26 text-white">
       {/* Imagen de fondo completa (reemplaza con tu foto deseada) */}
+      <div className="absolute inset-0">
+      <motion.div
+          animate={{ rotate: -360 }}
+          transition={{
+            rotate: {
+              repeat: Infinity,
+              repeatType: "loop",
+              duration: 180,
+              ease: "linear",
+            },
+          }}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200%] h-[200%] max-w-none"
+        >
       <Image
         src="/img/bosque.png" // ← Coloca aquí tu imagen de fondo (en /public/img/)
         alt="Fondo publicitario impactante"
@@ -14,7 +27,8 @@ export default function FinalCTAContact() {
         className="object-cover brightness-50"
         priority
       />
-
+</motion.div>
+</div>
       {/* Overlay degradado para máxima legibilidad del texto */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#0033A0]/70 via-black/50 to-[#009846]/70" />
 
@@ -25,9 +39,9 @@ export default function FinalCTAContact() {
           whileInView={{ opacity: 1, rotateX: 0, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 1, ease: "easeOut" }}
-          className="mx-auto max-w-4xl text-center perspective-[1200px]"
+          className="mx-auto max-w-4xl text-center perspective-[1000px]"
         >
-          <div className="rounded-3xl border border-white/20 bg-white/10 px-10 py-20 backdrop-blur-2xl shadow-2xl">
+          {/* <div className="rounded-3xl border border-white/20 bg-white/10 px-10 py-20 backdrop-blur-2xl shadow-2xl">
             <h2 className="text-4xl font-extrabold md:text-5xl xl:text-6xl">
               Haz que tu marca se vea,
               <span className="block bg-gradient-to-r from-[#009846] to-[#0033A0] bg-clip-text text-transparent drop-shadow-lg">
@@ -42,7 +56,7 @@ export default function FinalCTAContact() {
             >
               Solicitar cotización ahora
             </motion.button>
-          </div>
+          </div> */}
         </motion.div>
 
         {/* CONTACT BLOCK */}
@@ -51,10 +65,11 @@ export default function FinalCTAContact() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2, duration: 0.9 }}
-          className="mt-36 grid grid-cols-1 gap-20 lg:grid-cols-2"
+          className="mt-6 grid grid-cols-1 gap-20 lg:grid-cols-2"
         >
           {/* INFO */}
           <div className="space-y-10">
+              <p className="text-red-700 font-bold">Sección Pie de Página</p>
             <h3 className="text-3xl font-bold">
               Conversemos sobre tu proyecto
             </h3>

@@ -16,16 +16,10 @@ export default function AboutUs() {
               viewport={{ once: false, margin: "-100px" }}
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
-              <span className="inline-block rounded-full bg-[#009846]/10 px-5 py-2 text-sm font-medium text-[#009846]">
-                Quiénes Somos
-              </span>
-
-              <h2 className="mt-8 text-5xl font-black leading-tight md:text-6xl lg:text-7xl">
-                Publicidad que construye
-                <br />
-                <span className="bg-gradient-to-r from-[#009846] via-[#009846] to-[#0033A0] bg-clip-text text-transparent">
-                  marcas visibles y memorables
-                </span>
+             
+ <p className="text-red-700 font-bold">Sección - Publicidad que construye</p>
+              <h2 className="bg-linear-to-r mt-6 text-6xl font-black from-[#0033A0] via-[#37b672] to-[#009846] bg-clip-text text-transparent">
+                Publicidad que construye marcas visibles y memorables
               </h2>
             </motion.div>
 
@@ -88,9 +82,9 @@ export default function AboutUs() {
 
               {/* Elemento decorativo flotante (opcional: hoja eco o forma abstracta) */}
               <motion.div
-                animate={{ y: [0, -25, 0] }}
-                transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
-                className="absolute -left-28 bottom-10 text-8xl opacity-70"
+                animate={{ y: [0, -65, 0] }}
+                transition={{ repeat: Infinity, duration: 10, ease: "easeInOut" }}
+                className="absolute -left-28 bottom-6 text-8xl opacity-70"
               >
                 🌿
               </motion.div>

@@ -93,14 +93,14 @@ export default function EcoFriendly() {
       <canvas ref={canvasRef} className="absolute inset-0 pointer-events-none" />
 
       <div className="container mx-auto px-6 max-w-7xl relative z-10">
+          <p className="text-red-700 font-bold text-center">Sección Compromiso Ecológico</p>
         <motion.h2
           initial={{ opacity: 0, y: -50 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 1.2 }}
-          className="text-5xl md:text-6xl font-black text-center leading-tight"
+          className="bg-linear-to-r mt-6 text-6xl font-black from-[#0033A0] via-[#37b672] to-[#009846] bg-clip-text text-transparent pb-4 text-center"
         >
-          <span className="text-[#0033A0]">Nuestro Compromiso</span>{' '}
-          <span className="text-[#009846]">Ecológico</span>
+          Nuestro Compromiso Ecológico
         </motion.h2>
 
         <motion.div
@@ -112,21 +112,21 @@ export default function EcoFriendly() {
           {/* Columna de Texto - Animaciones escalonadas */}
           <div className="space-y-8">
             <motion.p
-              variants={itemVariants}
+        
               className="text-xl md:text-2xl text-gray-800 leading-relaxed"
             >
               En <strong className="text-[#009846]">FG GO Publicidad</strong>, nos enorgullece ser una empresa ecológica que prioriza el cuidado del medio ambiente en cada proyecto.
             </motion.p>
 
             <motion.p
-              variants={itemVariants}
+           
               className="text-lg text-gray-700"
             >
               Utilizamos <span className="font-bold text-[#0033A0]">tintas ecológicas de última generación</span>, libres de solventes tóxicos y con bajo impacto ambiental, asegurando impresiones vibrantes y duraderas sin comprometer el planeta.
             </motion.p>
 
             <motion.p
-              variants={itemVariants}
+           
               className="text-lg text-gray-700 font-semibold"
             >
               Este enfoque sostenible no solo reduce emisiones y residuos, sino que también representa un <span className="text-[#009846]">plus diferenciador para nuestros clientes</span>, alineando sus marcas con valores ecológicos que resuenan en audiencias conscientes.
@@ -134,7 +134,7 @@ export default function EcoFriendly() {
 
             {/* CTA sutil con animación de pulso */}
             <motion.a
-              variants={itemVariants}
+    
               href="#contacto"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -148,7 +148,7 @@ export default function EcoFriendly() {
           <div className="relative h-[500px] lg:h-[700px]">
             {/* Fondo con onda animada ecológica */}
             <motion.div
-              variants={waveVariants}
+             
               animate="animate"
               className="absolute inset-0 bg-gradient-to-r from-[#009846]/20 to-[#0033A0]/20 rounded-full blur-3xl opacity-50"
             />
@@ -169,7 +169,7 @@ export default function EcoFriendly() {
 
             {/* Video placeholder (reemplaza: video de impresión eco o animación naturaleza) */}
             <motion.div
-              variants={itemVariants}
+           
               className="absolute top-1/6 w-full rounded-3xl overflow-hidden shadow-2xl"
             >
               <video

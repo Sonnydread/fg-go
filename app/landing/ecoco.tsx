@@ -42,16 +42,13 @@ export default function EcoCommitment() {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="max-w-3xl"
         >
+            <p className="text-red-700 font-bold">Sección Compromiso ambiental</p>
           <span className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-5 py-2 text-sm backdrop-blur-md">
             🌱 Compromiso ambiental
           </span>
 
-          <h2 className="mt-8 text-5xl font-black leading-tight md:text-6xl xl:text-7xl">
-            Publicidad responsable con el
-            <br />
-            <span className="bg-gradient-to-r from-[#009846] via-white to-[#0033A0] bg-clip-text text-transparent drop-shadow-2xl">
-              medio ambiente
-            </span>
+          <h2 className="bg-linear-to-r mt-6 text-6xl font-black from-[#0033A0] via-[#37b672] to-[#009846] bg-clip-text text-transparent">
+            Publicidad responsable con el medio ambiente
           </h2>
 
          <p className="mt-8 text-xl text-white/90">

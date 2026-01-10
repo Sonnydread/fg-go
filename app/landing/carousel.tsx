@@ -39,6 +39,7 @@ export function AutoScrollCarousel() {
       ]}
       className="w-full bg-[#013c1d] overflow-hidden"
     >
+        <p className="text-red-700 mt-6 ml-20 text-2xl font-bold">Sección Carrusel Automático</p>
       <CarouselContent className="-ml-4 py-4">
         {images.map((src, index) => (
           <CarouselItem

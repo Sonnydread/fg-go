@@ -49,10 +49,16 @@ export default function ServicesSection() {
         <motion.h2
           initial={{ opacity: 0, y: -40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          className="text-5xl md:text-6xl font-black text-center mb-16"
+          className="bg-linear-to-r mt-6 text-6xl font-black from-[#0033A0] via-[#37b672] to-[#009846] bg-clip-text text-transparent text-center pb-12"
         >
-          <span className="text-[#0033A0]">Nuestros</span>{' '}
-          <span className="text-[#009846]">Servicios</span>
+           <h2 >
+
+  (Ponerle nombre Sección hogar)
+
+
+          
+          </h2>
+            <p className="text-red-700 text-base font-bold">Sección Grid Hogar</p>
         </motion.h2>
 
         {/* Grid de Servicios - Cards dinámicas con hover futurista */}
@@ -87,6 +93,7 @@ export default function ServicesSection() {
 
         {/* Proceso - Línea de tiempo futurista */}
         <div className="mb-24">
+            <p className="text-red-700 font-bold text-center">Sección en evaluación.. (proceso, elegirnos, texto)</p>
           <h3 className="text-3xl md:text-4xl font-bold text-center mb-12 text-[#0033A0]">
             Nuestro Proceso
           </h3>

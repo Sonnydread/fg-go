@@ -49,7 +49,7 @@ export default function Hero() {
            <div>
             <p className="text-red-700 font-bold">Sección portada</p>
             <h1 className="bg-linear-to-r text-6xl font-black from-[#0033A0] via-[#37b672] to-[#009846] bg-clip-text text-transparent">
-            Transformamos tu marca con impacto visual inolvidable
+            Transformamos tu marca con impacto visual 
             </h1>
 
             <p className="mt-6 max-w-xl text-lg text-black">

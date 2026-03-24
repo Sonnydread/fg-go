@@ -1,6 +1,5 @@
 import { AutoScrollCarousel } from "./landing/carousel";
-
-import XxHero from "./landing/xxhero";
+// import XxHero from "./landing/xxhero";
 import Hero from "./landing/herox";
 import AboutUs from "./landing/aboutus";
 import XxAboutUs from "./landing/xxaboutus";
@@ -16,27 +15,31 @@ import Faqs from "./landing/faq";
 // import WatercolorGrok from "./landing/imagen-grok";
 
 
+
+
 export default function Page() {
   return (
     <>
+   
+  
       <Hero />
-   <WatercolorGPT
+   {/* <WatercolorGPT
   title="Innovación orgánica que conecta tecnología y naturaleza"
   logoSrc="/logo.svg"
-/>
+/> */}
 
-      <Velocidad />
+      {/* <Velocidad /> */}
       {/* <XxHero /> */}
-      <AboutUs />
-      <XxAboutUs />
-      <CoreServices />
-      <EcoFriendly />
-      <EcoCommitment />
-      <ServicesSection />
-      <Faqs />
+      {/* <AboutUs /> */}
+      {/* <XxAboutUs /> */}
+      {/* <CoreServices /> */}
+      {/* <EcoFriendly /> */}
+      {/* <EcoCommitment /> */}
+      {/* <ServicesSection /> */}
+      {/* <Faqs /> */}
       {/* <ContactSection /> */}
-      <AutoScrollCarousel />
-      <FinalCTAContact />
+      {/* <AutoScrollCarousel /> */}
+      {/* <FinalCTAContact /> */}
     </>
   );
 }

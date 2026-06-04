@@ -22,7 +22,7 @@ export default function XxHero() {
   return (
     <section className="relative h-screen overflow-hidden bg-gray-900">
       {/* Overlay degradado con tus colores corporativos */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-950/80 via-transparent to-green-800/90" />
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-650/80 via-transparent to-green-800/90" />
 
       {/* Contenido principal */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6">

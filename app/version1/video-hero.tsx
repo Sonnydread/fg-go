@@ -18,7 +18,7 @@ export default function VideoHero() {
   const [index, setIndex] = useState(0);
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
-  // ⏱️ Control de cambio cada 5 segundos
+  // Cambio automático cada 5 segundos
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % videos.length);
@@ -27,7 +27,7 @@ export default function VideoHero() {
     return () => clearInterval(interval);
   }, []);
 
-  // 🔄 Reinicia el video cada vez que cambia
+  // Reinicia y reproduce el video al cambiar
   useEffect(() => {
     if (videoRef.current) {
       videoRef.current.currentTime = 0;
@@ -37,7 +37,7 @@ export default function VideoHero() {
 
   return (
     <section className="relative w-full h-screen overflow-hidden bg-black">
-      {/* Videos */}
+      {/* Videos con transición suave */}
       <AnimatePresence mode="wait">
         <motion.video
           key={index}
@@ -50,26 +50,38 @@ export default function VideoHero() {
           initial={{ opacity: 0, scale: 1.05 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.2, ease: "easeInOut" }}
+          transition={{ duration: 0.6, ease: "easeInOut" }}
         />
       </AnimatePresence>
 
-      {/* Overlay oscuro para contraste */}
-      <div className="absolute inset-0 bg-black/40 z-10" />
+      {/* Overlay oscuro */}
+      <div className="absolute inset-0 bg-black/50 z-10" />
 
-      {/* Contenido encima */}
-      <div className="relative z-20 flex-col items-center justify-center h-full text-center px-6">
-          <Image
-                       src="/img/cars/logo.png"
-                       alt="Publicidad exterior"
-                       width={600}
-                       height={600}
-                       className="flex items-center mx-auto pt-[16%] justify-center object-cover"
-                     />
-        <h1 className="text-white text-4xl md:text-6xl font-bold">
-         Presencia real <br /> por donde lo mires
+      {/* Contenido principal */}
+      <div className="relative z-20 flex flex-col items-center justify-center h-full text-center px-6">
+        <Image
+          src="/img/cars/logo.png"
+          alt="Publicidad exterior"
+          width={400}
+          height={400}
+          className="mx-auto pt-[8%] md:pt-[2%] object-contain"
+          priority
+        />
+        <h1 className="text-white text-4xl md:text-4xl font-bold mt-6 leading-tight">
+          Presencia real <br /> por donde lo mires
         </h1>
+      </div>
 
+      {/* === DIVISOR GEOMÉTRICO SUTIL EN LA PARTE INFERIOR === */}
+      <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-30">
+        <svg
+          viewBox="0 0 1440 120"
+          className="w-full h-[90px] md:h-[110px] lg:h-[120px]"
+          preserveAspectRatio="none"
+          fill="white"   // ← Color del siguiente fondo (cámbialo si tu siguiente sección es diferente)
+        >
+          <polygon points="0,120 0,65 360,92 720,48 1080,88 1440,60 1440,120" />
+        </svg>
       </div>
     </section>
   );

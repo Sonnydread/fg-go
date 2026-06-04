@@ -1,5 +1,5 @@
 @import "tailwindcss";
-
+/* @import "shadcn/tailwind.css"; */
 @plugin "tailwindcss-animate";
 @import "tw-animate-css";
 
@@ -129,3 +129,13 @@ body {
     @apply bg-background text-foreground;
   }
 }
+ html {
+    @apply bg-background;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overscroll-behavior: none;
+    overscroll-behavior-x: none;
+    overscroll-behavior-y: none;
+  }
+  

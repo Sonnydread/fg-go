@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
-import { cn } from "@/lib/utils";
+// import { cn } from "@/lib/utils";
 
 interface ScrollVelocityContainerProps {
   children: React.ReactNode;
@@ -10,12 +10,14 @@ interface ScrollVelocityContainerProps {
 
 export function ScrollVelocityContainer({
   children,
-  className,
+ 
 }: ScrollVelocityContainerProps) {
   return (
-    <div className={cn("overflow-hidden whitespace-nowrap", className)}>
+    <>
+   
       {children}
-    </div>
+   
+    </>
   );
 }
 

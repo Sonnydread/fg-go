@@ -3,12 +3,13 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { MessageCircle } from "lucide-react";
+
 import {
   Accordion,
   AccordionItem,
   AccordionTrigger,
   AccordionContent,
-} from "@/components/ui/accordion";
+} from "../../components/ui/accordion";
 
 export default function Faqs() {
   const faqs = [
@@ -50,11 +51,11 @@ export default function Faqs() {
 
       {/* Luces de fondo */}
       <div className="absolute inset-0 
-        bg-[radial-gradient(circle_at_25%_40%,rgba(56,189,248,0.18),transparent_60%)] 
+        bg-[radial-gradient(circle_at_25%_40%,rgba(56,189,248,0.18),transparent_30%)] 
         pointer-events-none" />
 
       <div className="absolute inset-0 
-        bg-[radial-gradient(circle_at_75%_60%,rgba(16,185,129,0.15),transparent_65%)] 
+        bg-[radial-gradient(circle_at_75%_60%,rgba(16,185,129,0.15),transparent_30%)] 
         pointer-events-none" />
 
       {/* Header */}
@@ -121,16 +122,61 @@ export default function Faqs() {
 
       {/* CTA */}
       <div className="relative z-10 flex justify-center mt-16">
-        <motion.a
-          href="https://wa.me/51982748220?text=Hola!%20Quisiera%20más%20información%20sobre%20los%20servicios%20de%20FGGO!"
-          target="_blank"
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-        className="mt-8 inline-flex items-center gap-3 bg-green-500 hover:bg-green-600 text-white font-semibold px-6 py-3 rounded-full shadow-lg transition-all" >
-        
-          <MessageCircle className="w-5 h-5" />
-          Escríbenos por WhatsApp
-        </motion.a>
+          <a
+              href="https://wa.me/51982748220?text=Hola!%20Quisiera%20más%20información%20sobre%20los%20servicios%20de%20FGGO!"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <button
+                className="group relative px-12 py-8 mt-30 rounded-full 
+                   bg-black text-white text-lg font-bold
+                   shadow-[0_10px_10px_rgba(0,0,0,0.6)]
+                   transition-all duration-300 hover:scale-[1.08]"
+              >
+                <div className="absolute -inset-[0.1px] rounded-full overflow-hidden">
+                  <div
+                    className="absolute inset-0 rounded-full animate-[spin_4s_linear_infinite]"
+                    style={{
+                      background: `conic-gradient(
+                from 0deg,
+                transparent,
+                rgba(34,197,94,0.2),
+                #22c55e,
+                #4ade80,
+                transparent
+              )`,
+                    }}
+                  />
+                </div>
+                <div
+                  className="absolute -inset-[6px] rounded-full opacity-70 blur-[10px] group-hover:opacity-100 transition-all duration-300"
+                  style={{
+                    background:
+                      "linear-gradient(90deg, #4ade80, #22c55e, #16a34a)",
+                  }}
+                />
+                <div
+                  className="absolute -inset-[14px] rounded-full opacity-50 blur-[35px] mix-blend-screen group-hover:opacity-80 transition-all duration-300"
+                  style={{
+                    background:
+                      "linear-gradient(90deg, #4ade80, #22c55e, #16a34a)",
+                  }}
+                />
+                <div
+                  className="absolute -inset-[22px] rounded-full opacity-30 blur-[60px] mix-blend-screen"
+                  style={{
+                    background: "linear-gradient(90deg, #22c55e, #4ade80)",
+                  }}
+                />
+                <div className="absolute inset-[3px] rounded-full bg-black" />
+                <div className="absolute inset-[4px] rounded-full border border-black" />
+                <span className="relative z-10 flex items-center gap-3">
+                  <MessageCircle className="text-green-500" />
+                  Escríbenos al WhatsApp
+                </span>
+              </button>
+            </a>
+
       </div>
     </section>
   );

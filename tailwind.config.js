@@ -4,18 +4,23 @@ module.exports = {
     "./app/**/*.{js,ts,jsx,tsx}",
     "./src/app/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
-    "./src/components/**/*.{js,ts,jsx,tsx}"
+    "./src/components/**/*.{js,ts,jsx,tsx}",
+    // Agrega esto si tienes más carpetas comunes:
+    // "./src/**/*.{js,ts,jsx,tsx}",
   ],
- theme: {
+
+  theme: {
     extend: {
       fontFamily: {
-       sans: ["var(--font-quicksand)", "system-ui", "sans-serif"],
+        sans: ["var(--font-quicksand)", "system-ui", "sans-serif"],
         mono: ["var(--font-geist-mono)"],
       },
+      // Aquí puedes agregar más extensiones si las necesitas
     },
   },
+
   plugins: [
-    // ... otros plugins
-    require("tailwindcss-animate"),  
+    require("tailwindcss-animate"),
+    // Agrega aquí otros plugins
   ],
 };

@@ -37,7 +37,7 @@ export default function MediaSection() {
   const rotateYRight = useTransform(smoothX, [-1, 1], [-25, 30]);
 
   return (
-    <section className="w-full bg-[#f5f5f5] py-4 overflow-hidden">
+    <section className="w-full  py-4 overflow-hidden">
       <div className="mx-4 py-20 border bg-gray-200 rounded-md">
         <div className="max-w-[1400px] mx-auto grid md:grid-cols-[60%_40%] gap-12 items-start px-6 lg:px-10">
           
@@ -147,6 +147,7 @@ export default function MediaSection() {
                 <button className="rounded-full mt-8 cursor-pointer bg-gradient-to-r from-[#0033A0] to-[#009846] px-12 py-5 text-lg font-bold text-white shadow-2xl hover:opacity-90 transition">
                   Solicitar cotización
                 </button>
+                
               </a>
             </motion.div>
 

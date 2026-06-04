@@ -1,15 +1,15 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import Image from 'next/image';
+import { motion } from "framer-motion";
+import Image from "next/image";
+import { MapPin, Phone, Mail } from "lucide-react";
 
 export default function FinalCTAContact() {
   return (
     <section className="relative overflow-hidden py-26 text-white">
       {/* Imagen de fondo completa (reemplaza con tu foto deseada) */}
       <div className="absolute inset-0">
-      <motion.div
-          animate={{ rotate: -360 }}
+        <motion.div
           transition={{
             rotate: {
               repeat: Infinity,
@@ -18,21 +18,21 @@ export default function FinalCTAContact() {
               ease: "linear",
             },
           }}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200%] h-[200%] max-w-none"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-none"
         >
-      <Image
-        src="/img/bosque.png" // ← Coloca aquí tu imagen de fondo (en /public/img/)
-        alt="Fondo publicitario impactante"
-        fill
-        className="object-cover brightness-50"
-        priority
-      />
-</motion.div>
-</div>
-      {/* Overlay degradado para máxima legibilidad del texto */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#0033A0]/70 via-black/50 to-[#009846]/70" />
-
+          <Image
+            src="/img/boske.png" // ← Coloca aquí tu imagen de fondo (en /public/img/)
+            alt="Fondo publicitario impactante"
+            fill
+            className="object-cover brightness-50"
+            priority
+          />
+        </motion.div>
+      </div>
       <div className="relative mx-auto max-w-7xl px-6 z-10">
+        <h3 className="text-3xl font-bold">
+              Háblanos de tu proyecto..
+            </h3>
         {/* CTA BLOCK */}
         <motion.div
           initial={{ opacity: 0, rotateX: 25, y: 80 }}
@@ -69,45 +69,53 @@ export default function FinalCTAContact() {
         >
           {/* INFO */}
           <div className="space-y-10">
-              <p className="text-red-700 font-bold">Sección Pie de Página</p>
-            <h3 className="text-3xl font-bold">
-              Conversemos sobre tu proyecto
-            </h3>
+            <Image
+              src="/img/logofb.jpg"
+              alt="logo"
+              width={200}
+              height={200}
+              className="object-cover transition-transform duration-700 group-hover:scale-110"
+            />
+
+          
 
             <ul className="space-y-6 text-lg">
               <li className="flex items-start gap-4">
-                <span className="text-2xl">📍</span>
+                <MapPin size="30" />
                 <div>
-                  <strong>Dirección:</strong><br />
                   <span className="text-white/90">
                     Av. República de Panamá N° 5527 Of. 406 – Surquillo
                   </span>
                 </div>
               </li>
               <li className="flex items-start gap-4">
-                <span className="text-2xl">📞</span>
+                <Phone size="30" />
                 <div>
-                  <strong>Teléfono / WhatsApp:</strong><br />
-                  <a href="tel:+51XXXXXXXXX" className="text-white/90 hover:underline">
-                    +51 XXX XXX XXX
-                  </a>
+                  <strong>Teléfonos</strong>
+                  <br />
+                  <p className="text-white/90 hover:underline">982 748 220 | 989 485 036</p>
                 </div>
               </li>
               <li className="flex items-start gap-4">
-                <span className="text-2xl">✉️</span>
+                <Mail size="30" />
                 <div>
-                  <strong>Email:</strong><br />
-                  <a href="mailto:contacto@fggopublicidad.com" className="text-white/90 hover:underline">
-                    contacto@fggopublicidad.com
-                  </a>
+                  <strong>Email:</strong>
+                  <br />
+                  <p className="text-white/90 hover:underline">
+                    jgomez@fggopublicidad.com
+                  </p>
+                  <p className="text-white/90 hover:underline">
+                    nmontezao@fggopublicidad.com
+                  </p>
                 </div>
               </li>
             </ul>
 
             {/* Decorative card */}
-            <div className="relative mt-10 rounded-2xl border border-white/20 bg-white/10 p-6 backdrop-blur-xl">
+            <div className="relative mt-10 rounded-2xl border border-white/20 bg-green-900/80 p-6 backdrop-blur-xl">
               <p className="text-sm text-white/80 text-center">
-                Respuesta rápida · Asesoría especializada · Cotización sin compromiso
+                Respuesta rápida · Asesoría especializada · Cotización sin
+                compromiso
               </p>
             </div>
           </div>
@@ -117,7 +125,7 @@ export default function FinalCTAContact() {
             initial={{ opacity: 0, rotateY: -20 }}
             whileInView={{ opacity: 1, rotateY: 0 }}
             transition={{ duration: 0.9 }}
-            className="relative rounded-3xl border border-white/20 bg-white/10 p-10 backdrop-blur-2xl shadow-2xl"
+            className="relative rounded-3xl border border-white/20 bg-green-900/50 p-10 backdrop-blur-2xl shadow-2xl"
           >
             <h4 className="mb-8 text-xl font-semibold text-center">
               Solicita tu cotización
@@ -128,34 +136,75 @@ export default function FinalCTAContact() {
                 type="text"
                 placeholder="Nombre"
                 required
-                className="w-full rounded-xl bg-white/20 px-5 py-4 text-white placeholder:text-white/50 outline-none focus:ring-2 focus:ring-[#009846]/50 transition"
+                className="w-full rounded-xl bg-black px-5 py-4 text-white placeholder:text-white/50 outline-none focus:ring-2 focus:ring-[#009846]/50 transition"
               />
               <input
                 type="email"
                 placeholder="Email"
                 required
-                className="w-full rounded-xl bg-white/20 px-5 py-4 text-white placeholder:text-white/50 outline-none focus:ring-2 focus:ring-[#009846]/50 transition"
+                className="w-full rounded-xl bg-black px-5 py-4 text-white placeholder:text-white/50 outline-none focus:ring-2 focus:ring-[#009846]/50 transition"
               />
               <input
                 type="tel"
                 placeholder="Teléfono / WhatsApp"
-                className="w-full rounded-xl bg-white/20 px-5 py-4 text-white placeholder:text-white/50 outline-none focus:ring-2 focus:ring-[#009846]/50 transition"
+                className="w-full rounded-xl bg-black px-5 py-4 text-white placeholder:text-white/50 outline-none focus:ring-2 focus:ring-[#009846]/50 transition"
               />
               <textarea
                 placeholder="Cuéntanos brevemente tu proyecto"
                 rows={4}
                 required
-                className="w-full rounded-xl bg-white/20 px-5 py-4 text-white placeholder:text-white/50 outline-none focus:ring-2 focus:ring-[#009846]/50 transition resize-none"
+                className="w-full rounded-xl bg-black px-5 py-4 text-white placeholder:text-white/50 outline-none focus:ring-2 focus:ring-[#009846]/50 transition resize-none"
               />
 
-              <motion.button
-                type="submit"
-                whileHover={{ scale: 1.04 }}
-                whileTap={{ scale: 0.96 }}
-                className="w-full rounded-full bg-gradient-to-r from-[#009846] to-[#0033A0] py-5 font-bold text-white shadow-xl hover:opacity-90 transition"
-              >
-                Enviar mensaje
-              </motion.button>
+              <a>
+                <button
+                  className="group relative px-6 py-4 w-[50%] rounded-full 
+                   bg-black text-white text-lg font-bold
+                   shadow-[0_10px_10px_rgba(0,0,0,0.6)]
+                   transition-all duration-300 hover:scale-[1.08]"
+                >
+                  <div className="absolute -inset-[0.1px] rounded-full overflow-hidden">
+                    <div
+                      className="absolute inset-0 rounded-full animate-[spin_4s_linear_infinite]"
+                      style={{
+                        background: `conic-gradient(
+                from 0deg,
+                transparent,
+                rgba(34,197,94,0.2),
+                #22c55e,
+                #4ade80,
+                transparent
+              )`,
+                      }}
+                    />
+                  </div>
+                  <div
+                    className="absolute -inset-[6px] rounded-full opacity-70 blur-[10px] group-hover:opacity-100 transition-all duration-300"
+                    style={{
+                      background:
+                        "linear-gradient(90deg, #4ade80, #22c55e, #16a34a)",
+                    }}
+                  />
+                  <div
+                    className="absolute -inset-[14px] rounded-full opacity-50 blur-[35px] mix-blend-screen group-hover:opacity-80 transition-all duration-300"
+                    style={{
+                      background:
+                        "linear-gradient(90deg, #4ade80, #22c55e, #16a34a)",
+                    }}
+                  />
+                  <div
+                    className="absolute -inset-[22px] rounded-full opacity-30 blur-[60px] mix-blend-screen"
+                    style={{
+                      background: "linear-gradient(90deg, #22c55e, #4ade80)",
+                    }}
+                  />
+                  <div className="absolute inset-[3px] rounded-3xl bg-black" />
+                  <div className="absolute inset-[4px] rounded-full border border-black" />
+                  <span className="relative text-xl z-10 mx-auto flex items-center gap-3">
+                    Enviar mensaje
+                  </span>
+                </button>
+              </a>
             </div>
           </motion.form>
         </motion.div>

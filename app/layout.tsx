@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Quicksand } from "next/font/google";
 import "./globals.css";
+import { ScrollProgress } from "./landing/scroll-progress";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -18,8 +19,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "FGGO - Publicidad",
-  description: "Publicidad Exterior/Interior",
+  title: "FGGO Publicidad",
+  description: "Diseñamos, producimos e instalamos soluciones de publicidad de alto impacto visual. Precisión, calidad y presencia real en todos lados.",
+   icons: {
+    icon: "img/fggo.png",
+  },
 };
 
 export default function RootLayout({
@@ -32,6 +36,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${quicksand.variable} ${geistMono.variable} antialiased`}
       >
+        <ScrollProgress />
         {children}
       </body>
     </html>

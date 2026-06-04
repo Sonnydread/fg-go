@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import { ChevronRight } from "lucide-react";
 import Lottie from "lottie-react";
 import {
   Megaphone,
@@ -84,7 +85,7 @@ const cards = [
 
 export default function LottieCardFlow() {
   const [activeIndex, setActiveIndex] = useState<number>(2);
-
+ const [hovered, setHovered] = useState<number | null>(null);
   // 🎨 Preprocesar color una sola vez
   const preColoredCards = useMemo(() => {
     return cards.map((card) => ({
@@ -94,7 +95,8 @@ export default function LottieCardFlow() {
   }, []);
 
   return (
-    <section className="w-full h-screen flex items-center justify-center bg-[#f5f5f5] px-6">
+    <>
+    <section className="w-full h-screen flex flex-col items-center justify-center bg-gradient-to-b from-green-900 to-[#072566] px-6">
       <div className="relative w-full max-w-[1400px]">
 
         {/* Línea */}
@@ -192,6 +194,41 @@ export default function LottieCardFlow() {
           })}
         </div>
       </div>
+
+     {/* BOTÓN ALINEADO CORRECTAMENTE */}
+<div className="w-full max-w-[1400px] mx-auto mt-10">
+  <div className="max-w-[400px]">
+    <motion.button
+      onMouseEnter={() => setHovered(1)}
+      onMouseLeave={() => setHovered(null)}
+      className="group relative w-full h-[56px] rounded-2xl border border-gray-300 bg-white
+                 flex items-center justify-center gap-2 overflow-hidden
+                 text-gray-800 font-medium hover:border-gray-400 transition-colors"
+    >
+      <span className="relative z-10">Explore</span>
+
+      <motion.span
+        initial={{ opacity: 0, x: 20, scale: 0.8 }}
+        animate={{
+          opacity: hovered === 1 ? 1 : 0,
+          x: hovered === 1 ? 0 : 20,
+          scale: hovered === 1 ? 1 : 0.8,
+        }}
+        transition={{
+          duration: 0.25,
+          ease: [0.4, 0.0, 0.2, 1],
+        }}
+        className="relative z-10"
+      >
+        <ChevronRight size={18} />
+      </motion.span>
+
+      <div className="absolute inset-0 bg-gray-100 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300 rounded-2xl" />
+    </motion.button>
+  </div>
+</div>
+
     </section>
+</>
   );
 }

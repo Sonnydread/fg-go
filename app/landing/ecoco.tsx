@@ -2,8 +2,12 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { useEffect } from "react";
 
 export default function EcoCommitment() {
+   useEffect(() => {
+    import("@dotlottie/player-component");
+  }, []);
   return (
     <section className="relative overflow-hidden py-32 lg:py-40 text-white">
       {/* Imagen de fondo cover (pex.jpg) */}
@@ -15,9 +19,7 @@ export default function EcoCommitment() {
         priority
       />
 
-      {/* Overlay innovador: Scrim degradado + glassmorphism dinámico para máxima legibilidad */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#0033A0]/60 via-black/40 to-[#009846]/60" />
-      <div className="absolute inset-0 bg-black/30 backdrop-blur-[2px]" /> {/* Blur sutil para profundidad */}
+    
 
       {/* Ambient glows neon (verde y azul) */}
       <div className="pointer-events-none absolute inset-0">
@@ -33,21 +35,20 @@ export default function EcoCommitment() {
         />
       </div>
 
-      <div className="relative mx-auto max-w-7xl px-6 z-10">
+      <div className="relative mx-20 max-w-full px-6 z-10">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="max-w-3xl"
+          className="w-full"
         >
-            <p className="text-red-700 font-bold">Sección Compromiso ambiental</p>
-          <span className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-5 py-2 text-sm backdrop-blur-md">
+          <span className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-8 py-5 font-semibold text-xl backdrop-blur-md">
             🌱 Compromiso ambiental
           </span>
 
-          <h2 className="bg-linear-to-r mt-6 text-6xl font-black from-[#0033A0] via-[#37b672] to-[#009846] bg-clip-text text-transparent">
+          <h2 className="text-[#009846] mt-6 text-6xl font-black">
             Publicidad responsable con el medio ambiente
           </h2>
 
@@ -75,10 +76,10 @@ export default function EcoCommitment() {
             transition={{ duration: 0.9, ease: "easeOut" }}
             className="relative"
           >
-            <div className="relative aspect-[4/5] overflow-hidden rounded-3xl border border-white/20 bg-white/10 backdrop-blur-2xl shadow-2xl">
+            <div className="relative aspect-[5/5] overflow-hidden rounded-3xl border border-white/20 bg-white/10 backdrop-blur-2xl shadow-2xl">
               {/* Imagen secundaria o video (opcional) */}
               <Image
-                src="/img/vinilcar.jpg" // ← Puedes mantener una imagen destacada aquí si quieres
+                src="/img/cars/kar.jpg" // ← Puedes mantener una imagen destacada aquí si quieres
                 alt="Ejemplo de publicidad ecológica"
                 fill
                 className="object-cover opacity-70"
@@ -103,42 +104,23 @@ export default function EcoCommitment() {
           </motion.div>
 
           {/* RIGHT – Valores ecológicos (cards con glassmorphism) */}
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="space-y-10"
-          >
-            {[
-              {
-                title: "Tintas ecológicas",
-                desc: "Reducen emisiones contaminantes y son seguras para el entorno urbano.",
-              },
-              {
-                title: "Producción responsable",
-                desc: "Optimizamos materiales y procesos para minimizar residuos.",
-              },
-              {
-                title: "Calidad sostenible",
-                desc: "La durabilidad y el color se mantienen sin comprometer el planeta.",
-              },
-            ].map((item, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.15 * i + 0.2 }}
-                whileHover={{ scale: 1.03, y: -5 }}
-                className="rounded-3xl border border-white/20 bg-white/10 p-8 backdrop-blur-xl shadow-xl transition-all"
-              >
-                <h3 className="text-2xl font-bold text-[#009846] drop-shadow-md">
-                  {item.title}
-                </h3>
-                <p className="mt-4 text-lg text-white/90">{item.desc}</p>
-              </motion.div>
-            ))}
-          </motion.div>
+            <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="flex z-50 relative justify-center items-center mt-20"
+        >
+          <div className="w-[280px] md:w-[700px]">
+            {/* <dotlottie-player
+              src="/lottie/earth.lottie"
+              autoplay
+              loop
+              style={{ width: "100%", height: "100%" }}
+            /> */}
+          </div>
+        </motion.div>
+
         </div>
 
         {/* Bottom statement */}

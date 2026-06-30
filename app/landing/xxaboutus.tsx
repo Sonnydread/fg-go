@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { motion, useMotionValue, Variants, useSpring, useTransform } from "framer-motion";
 import Image from "next/image";
 import { useInView } from "react-intersection-observer";
 import { useEffect } from "react";
@@ -9,7 +9,7 @@ import { ScrollVelocityContainer, ScrollVelocityRow } from "../../components/ui/
 export default function XxAboutUs() {
   const [ref, inView] = useInView({
     threshold: 0.3,
-    triggerOnce: true,
+    triggerOnce: false,
   });
 
   // 🔥 MOUSE TRACKING (nuevo)
@@ -42,30 +42,44 @@ export default function XxAboutUs() {
   const rotateXRight = useTransform(smoothY, [-1, 1], [22, -22]);
   const rotateYRight = useTransform(smoothX, [-1, 1], [-25, 30]);
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.2 },
+const statsContainer: Variants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.25,
+      delayChildren: 0.2,
     },
-  };
+  },
+};
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
-  };
+const statItem: Variants = {
+  hidden: {
+    opacity: 0,
+    y: 30,
+    filter: "blur(8px)",
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+    transition: {
+      duration: 0.7,
+      ease: "easeOut",
+    },
+  },
+};
 
   return (
     <section
       id="nosotros"
-      className="pt-60 pb-20 bg-gradient-to-b from-green-800 to-[#01274f] overflow-hidden"
+      className="pt-30 pb-10 bg-gradient-to-b from-[#01274f] to-green-700 overflow-hidden"
     >
-      <div className="container mx-auto px-6 max-w-7xl">
-        <div ref={ref} className="grid lg:grid-cols-2 gap-12 lg:gap-20 mb-10">
+      <div className="mx-auto max-w-7xl">
+        <div ref={ref} className="grid lg:grid-cols-2 gap-12 lg:gap-20">
           
           {/* 🔹 COLUMNA TEXTO (igual) */}
           <motion.div
-            variants={containerVariants}
+            variants={statItem}
             initial="hidden"
             animate={inView ? "visible" : "hidden"}
             className="space-y-8"
@@ -73,54 +87,61 @@ export default function XxAboutUs() {
             <motion.h2
               initial={{ opacity: 0, y: -30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-white text-6xl font-black pb-20"
+              viewport={{ once: false }}
+              className="text-white text-6xl pt-20 font-black pb-20"
             >
               ¿Quiénes Somos?
             </motion.h2>
 
-            <motion.p variants={itemVariants} className="text-xl md:text-2xl text-white">
+            <motion.p variants={statItem} className="text-xl md:text-2xl text-white">
               <strong>FG GO PUBLICIDAD S.A.C.</strong> es una empresa peruana con{" "}
               <span>más de 25 años de experiencia</span> en el rubro de la publicidad interior y exterior.
             </motion.p>
 
-            <motion.p variants={itemVariants} className="text-2xl text-white">
+            <motion.p variants={statItem} className="text-2xl text-white">
               Nos distinguimos por ofrecer servicios con{" "}
               <strong>garantía, calidad y puntualidad</strong>, respaldados por maquinaria de última generación.
             </motion.p>
 
-            <div className="mt-24 flex items-center gap-8 text-lg text-white">
-              <div>
-                <span className="block text-4xl text-center font-medium">25+</span>
-                Años de experiencia
-              </div>
-              <div>
-                <span className="block text-4xl text-center font-medium">100%</span>
-                Calidad garantizada
-              </div>
-              <div>
-                <span className="block text-4xl text-center font-medium">Alta</span>
-                Resolución visual
-              </div>
-            </div>
+       <motion.div
+  variants={statsContainer}
+  initial="hidden"
+  animate={inView ? "visible" : "hidden"}
+  className="mt-24 flex items-center gap-8 text-lg text-white"
+>
+  <motion.div variants={statItem}>
+    <span className="block text-center text-5xl font-bold">25+</span>
+    Años de experiencia
+  </motion.div>
+
+  <motion.div variants={statItem}>
+    <span className="block text-center text-5xl font-bold">100%</span>
+    Calidad garantizada
+  </motion.div>
+
+  <motion.div variants={statItem}>
+    <span className="block text-center text-5xl font-bold">Alta</span>
+    Resolución visual
+  </motion.div>
+</motion.div>
           </motion.div>
 
           {/* 🔥 NUEVA COLUMNA (REEMPLAZO TOTAL) */}
-          <div className="relative h-[500px] lg:h-[800px] flex items-center justify-center [perspective:1400px]">
+          <div className="relative h-[500px] md:h-[920px] flex items-center justify-center">
             
             {/* Imagen grande */}
             <motion.div
               initial={{ scale: 0.6, opacity: 0 }}
-              animate={inView ? { scale: 1, opacity: 1, x: -120, y: -280 } : {}}
+              animate={inView ? { scale: 1, opacity: 1, x: -150, y: -220 } : {}}
               transition={{ duration: 1.2 }}
-              className="absolute"
+              className="absolute z-20"
             >
-              <motion.div style={{ rotateX: rotateXLeft, rotateY: rotateYLeft }}>
+              <motion.div className="h-[420px]" style={{ rotateX: rotateXLeft, rotateY: rotateYLeft }}>
                 <Image
-                  src="/img/vin7.jpeg"
-                  alt=""
-                  width={450}
-                  height={230}
+                  src="/img/logo/aboutt.png"
+                  alt="branding publicitario"
+                  width={420}
+                  height={480}
                   className="rounded-3xl object-cover"
                 />
               </motion.div>
@@ -129,16 +150,16 @@ export default function XxAboutUs() {
             {/* Imagen circular */}
             <motion.div
               initial={{ scale: 0.7, opacity: 0 }}
-              animate={inView ? { scale: 1.05, opacity: 1, x: 220, y: -260 } : {}}
+              animate={inView ? { scale: 1.05, opacity: 1, x: 160, y: -240 } : {}}
               transition={{ duration: 1.1, delay: 0.2 }}
               className="absolute"
             >
               <motion.div style={{ rotateX: rotateXCenter, rotateY: rotateYCenter }}>
                 <Image
-                  src="/img/vinilcar.jpg"
-                  alt=""
+                  src="/img/logo/about.jpeg"
+                  alt="brandind publicidad"
                   width={330}
-                  height={320}
+                  height={420}
                   className="rounded-2xl object-cover"
                 />
               </motion.div>
@@ -147,9 +168,9 @@ export default function XxAboutUs() {
             {/* Video */}
             <motion.div
               initial={{ scale: 0.6, opacity: 0 }}
-              animate={inView ? { scale: 1, opacity: 1, x: -40, y: 120 } : {}}
+              animate={inView ? { scale: 1, opacity: 1, x: -40, y: 60 } : {}}
               transition={{ duration: 1.2, delay: 0.3 }}
-              className="absolute z-20"
+              className="absolute z-40"
             >
               <motion.div style={{ rotateX: rotateXRight, rotateY: rotateYRight }}>
                 <video
@@ -158,7 +179,7 @@ export default function XxAboutUs() {
                   muted
                   loop
                   playsInline
-                  className="w-[560px] h-[340px] object-cover rounded-2xl"
+                  className="w-[840px] h-[350px] object-cover rounded-2xl"
                 />
               </motion.div>
             </motion.div>
@@ -168,14 +189,14 @@ export default function XxAboutUs() {
 
       {/* 🔹 SCROLL ROW (igual) */}
       <div>
-        <h1 className="ml-34 pb-18 text-5xl text-white font-semibold">
+        <h1 className="ml-30 pb-18 text-5xl text-white font-semibold">
           Nuestros Servicios Integrales
         </h1>
 
         <div className="relative">
           <ScrollVelocityContainer className="text-3xl md:text-5xl bg-transparent font-semibold text-black">
             <ScrollVelocityRow baseVelocity={-4}>
-              <div className="flex gap-16 text-6xl font-bold pl-2 pb-4 text-[#009846] whitespace-nowrap">
+              <div className="flex gap-16 mx-auto text-6xl font-bold pl-2 pb-4 text-[#09b358] whitespace-nowrap">
                 Letreros luminosos · Brandeo Vehicular · Banderolas · Viniles Adhesivos · Bastidores · Letras Block · Stickers · Acrílicos ·
               </div>
             </ScrollVelocityRow>

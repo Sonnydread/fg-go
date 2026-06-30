@@ -94,7 +94,7 @@ export default function ScrollZoomGallery() {
   const textY = useTransform(scrollYProgress, [0.8, 1], [100, 0]);
 
   return (
-    <section ref={containerRef} className="h-[400vh] relative bg-gradient-to-b from-[#01274f] to-green-700">
+    <section ref={containerRef} className="h-[400vh] relative bg-gradient-to-b from-green-800 to-[#01274f]">
       <div className="sticky top-0 h-screen overflow-hidden">
 
         {/* 🎬 IMÁGENES */}
@@ -119,7 +119,7 @@ export default function ScrollZoomGallery() {
           className="absolute inset-0 flex flex-col items-center justify-center z-[200]"
         >
           <Image
-            src="/img/cars/logo.png"
+            src="/img/logo/log-reveal.png"
             alt="logo"
             width={520}
             height={320}

@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useEffect } from "react";
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 
 export default function EcoCommitment() {
    useEffect(() => {
@@ -111,14 +112,14 @@ export default function EcoCommitment() {
           viewport={{ once: true }}
           className="flex z-50 relative justify-center items-center mt-20"
         >
-          <div className="w-[280px] md:w-[700px]">
-            {/* <dotlottie-player
-              src="/lottie/earth.lottie"
-              autoplay
-              loop
-              style={{ width: "100%", height: "100%" }}
-            /> */}
-          </div>
+          <div className="w-[280px] h-[280px] md:w-[700px] md:h-[700px]">
+  <DotLottieReact
+    src="/lottie/earth.lottie"
+    autoplay
+    loop
+    style={{ width: "100%", height: "100%" }}
+  />
+</div>
         </motion.div>
 
         </div>

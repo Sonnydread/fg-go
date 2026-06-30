@@ -6,6 +6,7 @@ import { useState } from "react"
 // import ContactModal from "@/components/contact-modal"
 import { SiTiktok, SiInstagram, SiFacebook } from "react-icons/si"
 import { usePathname } from "next/navigation"
+import { useRef } from "react"
 import {
   motion,
   useScroll,
@@ -16,21 +17,35 @@ import {
 import { Menu, X, Play } from "lucide-react"
 import { Button } from "../../components/ui/button"
 
+
+
 const navItems = [
-  { name: "Inicio", href: "/" },
-  { name: "Corporativos", href: "/tienda" },
-  { name: "Hogar", href: "/sedes" },
-  { name: "Nosotros", href: "/blog" },
-  { name: "Faq´s", href: "/experiencia" },
-  { name: "Contáctanos", href: "/blogs" },
+  { name: "Inicio", href: "#inicio" },
+  { name: "Nosotros", href: "#nosotros" },
+  { name: "Corporativos", href: "#corporativos" },
+  { name: "Hogar", href: "#hogar" },
+  { name: "Faq´s", href: "#faqs" },
+  { name: "Contáctanos", href: "#footer" },
 ]
 
 export default function Navbar() {
+  const [position, setPosition] = useState({
+  left: 0,
+  width: 0,
+  opacity: 0,
+})
   const [open, setOpen] = useState(false)
   const pathname = usePathname()
   const { scrollY } = useScroll()
   const [hidden, setHidden] = useState(false)
   const [isMenuOpen, setMenuOpen] = useState(false)
+  const [mobilePosition, setMobilePosition] = useState({
+  top: 0,
+  height: 0,
+  opacity: 0,
+})
+
+const [selectedMobile, setSelectedMobile] = useState(pathname)
   const [isFirstRender, setIsFirstRender] = useState(true)
 
   useMotionValueEvent(scrollY, "change", (latest) => {
@@ -74,9 +89,9 @@ export default function Navbar() {
         animate={hidden ? "hidden" : "visible"}
         initial="visible"
         onAnimationComplete={() => setIsFirstRender(false)}
-        className="fixed top-0 left-0 z-50 hidden w-full items-center border-b border-gray-800 bg-black/40 py-1 backdrop-blur-sm md:flex"
+        className="fixed top-0 left-0 z-50 hidden w-full items-center border-b border-gray-800 bg-black/20 py-3 backdrop-blur-xl md:flex"
       >
-        <div className="mx-6 flex w-full max-w-[1920px] items-center justify-between">
+        <div className="mx-6 flex w-full max-w-[1920px] gap-36 items-center justify-between">
           <div className="flex">
               <Image
                 src="/img/fggo.png"
@@ -88,23 +103,29 @@ export default function Navbar() {
               
           </div>
 
-          <div className="flex flex-1 justify-center space-x-20">
-            {navItems.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className={`relative text-xl font-semibold uppercase transition hover:text-gray-300 ${
-                  pathname === item.href ? "text-white" : "text-white"
-                }`}
-              >
-                {item.name}
-                {pathname === item.href && (
-                  <span className="absolute -bottom-0.5 left-0 h-[2px] w-full bg-orange-700" />
-                )}
-              </Link>
-            ))}
-          </div>
-          <div className="mr-4 flex flex-shrink-0 flex-row gap-6">
+        <ul
+  onMouseLeave={() =>
+    setPosition((prev) => ({
+      ...prev,
+      opacity: 0,
+    }))
+  }
+  className="relative flex flex-1 rounded-full justify-center border-[1.8px] p-1 gap-2"
+>
+  {navItems.map((item) => (
+    <NavItem
+      key={item.name}
+      href={item.href}
+      pathname={pathname}
+      setPosition={setPosition}
+    >
+      {item.name}
+    </NavItem>
+  ))}
+
+  <Cursor position={position} />
+</ul>
+          <div className="mr-4 flex flex-row gap-6">
             <Link href="https://www.tiktok.com/@huellayaroma" target="_blank">
               <SiTiktok
                 size={22}
@@ -173,48 +194,54 @@ export default function Navbar() {
       </motion.div>
 
       {/* Mobile Menu */}
-      <AnimatePresence>
-        {isMenuOpen && (
-          <motion.div
-            key="menu"
-            className="fixed top-0 left-0 z-50 flex h-screen w-full items-center bg-black/95 px-6"
-            initial={{ y: "100%" }}
-            animate={{ y: 0 }}
-            exit={{ y: "-100%" }}
-            transition={{
-              duration: 0.4,
-              ease: "easeOut",
-            }}
-          >
-            <div className="mx-auto flex w-full max-w-[1280px] flex-col gap-4">
-              {navItems.map((item, i) => (
-                <MenuItem
-                  key={item.name}
-                  href={item.href}
-                  label={item.name.toUpperCase()}
-                  isActive={pathname === item.href}
-                  delay={0.2 + i * 0.1}
-                  onClick={onPageChange}
-                />
-              ))}
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.4, duration: 0.3 }}
-              >
-                <Link href="/contact" onClick={onPageChange}>
-                  <Button
-                    variant="link"
-                    className="font-space-grotesk px-0 text-3xl font-bold text-[#FF5F2A]"
-                  >
-                    Contáctanos
-                  </Button>
-                </Link>
-              </motion.div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+   {/* Mobile Menu */}
+<AnimatePresence>
+  {isMenuOpen && (
+    <motion.div
+      key="menu"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 z-[100] bg-black/80 backdrop-blur-3xl md:hidden"
+    >
+      {/* Botón cerrar */}
+      <Button
+        size="icon"
+        variant="ghost"
+        onClick={() => setMenuOpen(false)}
+        className="absolute right-6 top-6 h-12 w-12 rounded-full border border-white/10 bg-white/5 backdrop-blur-xl hover:border-green-500 hover:bg-green-500/10"
+      >
+        <X className="h-6 w-6 text-white" />
+      </Button>
+
+      <div className="flex h-full items-center justify-center">
+        <ul
+          onMouseLeave={() =>
+            setMobilePosition((prev) => ({
+              ...prev,
+              opacity: 0,
+            }))
+          }
+          className="relative flex w-full max-w-sm flex-col gap-3"
+        >
+          {navItems.map((item) => (
+            <MobileNavItem
+              key={item.href}
+              href={item.href}
+              label={item.name}
+              selected={selectedMobile}
+              setSelected={setSelectedMobile}
+              setPosition={setMobilePosition}
+              closeMenu={() => setMenuOpen(false)}
+            />
+          ))}
+
+          <MobileCursor position={mobilePosition} />
+        </ul>
+      </div>
+    </motion.div>
+  )}
+</AnimatePresence>
     </>
   )
 }
@@ -254,5 +281,166 @@ function MenuItem({
         </Button>
       </Link>
     </motion.div>
+  )
+}
+
+interface NavItemProps {
+  children: React.ReactNode
+  href: string
+  pathname: string
+  setPosition: React.Dispatch<
+    React.SetStateAction<{
+      left: number
+      width: number
+      opacity: number
+    }>
+  >
+}
+
+function NavItem({
+  children,
+  href,
+  pathname,
+  setPosition,
+}: NavItemProps) {
+  const ref = useRef<HTMLLIElement>(null)
+
+  return (
+    <li
+      ref={ref}
+      onMouseEnter={() => {
+        if (!ref.current) return
+
+        const { width } = ref.current.getBoundingClientRect()
+
+        setPosition({
+          left: ref.current.offsetLeft,
+          width,
+          opacity: 1,
+        })
+      }}
+      className="relative z-10"
+    >
+      <Link
+        href={href}
+        className={`block px-6 py-3 text-xl font-semibold uppercase transition duration-300 mix-blend-difference ${
+          pathname === href ? "text-white" : "text-white"
+        }`}
+      >
+        {children}
+      </Link>
+    </li>
+  )
+}
+
+function Cursor({
+  position,
+}: {
+  position: {
+    left: number
+    width: number
+    opacity: number
+  }
+}) {
+  return (
+    <motion.li
+      animate={position}
+      transition={{
+        type: "spring",
+        stiffness: 350,
+        damping: 30,
+      }}
+      className="absolute top-1/2 z-0 h-[54px] -translate-y-1/2 rounded-full bg-green-600"
+    />
+  )
+}
+
+interface MobileNavItemProps {
+  href: string
+  label: string
+  selected: string
+  setSelected: React.Dispatch<React.SetStateAction<string>>
+  setPosition: React.Dispatch<
+    React.SetStateAction<{
+      top: number
+      height: number
+      opacity: number
+    }>
+  >
+  closeMenu: () => void
+}
+
+function MobileNavItem({
+  href,
+  label,
+  selected,
+  setSelected,
+  setPosition,
+  closeMenu,
+}: MobileNavItemProps) {
+  const ref = useRef<HTMLLIElement>(null)
+
+  return (
+    <li
+      ref={ref}
+      className="relative z-10"
+    >
+      <Link
+        href={href}
+        onClick={(e) => {
+          e.preventDefault()
+
+          if (!ref.current) return
+
+          setSelected(href)
+
+          setPosition({
+            top: ref.current.offsetTop,
+            height: ref.current.offsetHeight,
+            opacity: 1,
+          })
+
+          setTimeout(() => {
+            closeMenu()
+            window.location.href = href
+          }, 220)
+        }}
+        className="flex justify-center rounded-full px-8 py-5 text-3xl font-bold uppercase text-white mix-blend-difference"
+      >
+        {label}
+      </Link>
+    </li>
+  )
+}
+
+function MobileCursor({
+  position,
+}: {
+  position: {
+    top: number
+    height: number
+    opacity: number
+  }
+}) {
+  return (
+    <motion.div
+      animate={position}
+      transition={{
+        type: "spring",
+        stiffness: 350,
+        damping: 30,
+      }}
+      className="
+        absolute
+        left-0
+        w-full
+        rounded-full
+        bg-gradient-to-r
+        from-green-700
+        via-green-600
+        to-green-500
+        shadow-[0_0_40px_rgba(34,197,94,0.45)]
+      "
+    />
   )
 }

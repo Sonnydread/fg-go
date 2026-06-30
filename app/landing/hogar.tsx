@@ -5,17 +5,16 @@ import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
 
 const projects = [
-  { id: 1, title: "Letreros luminosos", subtitle: "Inmobiliaria", image: "/img/corporativos/luminoso.png" },
-  { id: 2, title: "Brandeo Vehicular", subtitle: "Servicios Generales", image: "/img/corporativos/brad-vehi.jpeg" },
-  { id: 3, title: "Banderolas", subtitle: "Taller Automotriz", image: "/img/corporativos/banderola.png" },
-  { id: 4, title: "Viniles Adhesivos", subtitle: "Escuela de Buceo", image: "/img/corporativos/vin.png" },
-  { id: 5, title: "Bastidores", subtitle: "Servicios Generales", image: "/img/corporativos/raspa.png" },
-  { id: 6, title: "Letras block", subtitle: "Taller Automotriz", image: "/img/corporativos/le-block.jpg" },
-  { id: 7, title: "Stickers", subtitle: "Escuela de Buceo", image: "/img/corporativos/vin19.jpeg"  },
-  { id: 8, title: "Acrílicos", subtitle: "Abonos orgánicos", image: "/img/corporativos/acri.jpg" },
-];
+  { id: 1, title: "Cuadros", subtitle: "Inmobiliaria", image: "/img/hogar/cuadros.png" },
+  { id: 2, title: "Vinil Adhesivo", subtitle: "Servicios Generales", image: "/img/hogar/cocina.png" },
+  { id: 3, title: "Stickers", subtitle: "Taller Automotriz", image: "/img/hogar/vin5.jpeg" },
+  { id: 4, title: "Letras Block", subtitle: "Escuela de Buceo", image: "/img/hogar/casados.jpg" },
+  { id: 5, title: "Brandeo de paredes", subtitle: "Servicios Generales", image: "/img/hogar/avengers.jpg" },
+  { id: 6, title: "Brandeo vehicular", subtitle: "Taller Automotriz", image: "/img/hogar/camioneta.png" },
+  { id: 7, title: "Personalizados", subtitle: "Escuela de Buceo", image: "/img/hogar/letras-block.jpg" },
+]
 
-export default function Carousel() {
+export default function Hogar() {
   const [current, setCurrent] = useState(2);
   const [direction, setDirection] = useState(1);
   const [isDragging, setIsDragging] = useState(false);
@@ -66,16 +65,16 @@ export default function Carousel() {
   };
 
   return (
-    <section id="corporativos" className="w-full min-h-screen flex items-center justify-center pt-40 bg-green-700 relative overflow-hidden">
+    <section id="hogar" className="w-full min-h-screen flex items-center justify-center py-40 bg-gradient-to-b from-blue-700 to-green-900 relative overflow-hidden">
       <div className="max-w-[1800px] mx-auto px-6 relative w-full">
 
         {/* Título */}
         <div className="text-start max-w-[80%] ml-20">
           <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tighter">
-            Proyectos Corporativos que Impulsan Marcas
+           Hogar y trabajos personalizados
           </h2>
           <p className="text-white/70 text-2xl mt-4">
-           Diseñamos soluciones visuales de alto impacto para empresas que buscan destacar, conectar y fortalecer su presencia de marca en cada espacio.
+           Diseñamos piezas únicas y soluciones visuales personalizadas para hogares, oficinas y proyectos especiales, combinando creatividad, detalle y acabados de alta calidad para transformar cualquier espacio en algo cálido y original.
           </p>
         </div>
 

@@ -17,7 +17,7 @@ export default function RevealText() {
 
   return (
     <section ref={ref} className="h-[120vh]">
-      <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden">
+      <div className="sticky top-0 h-[100vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-green-700 flex items-center justify-center">
           <h1 className="text-white text-5xl md:text-7xl font-semibold text-center px-6">
             Diseñamos espacios que inspiran

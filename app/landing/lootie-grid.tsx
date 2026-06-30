@@ -52,19 +52,19 @@ const BLUE: LottieColor = [0.23, 0.51, 0.96];
 
 const cards = [
   {
-    title: "Publicidad Exterior",
+    title: "Atención Personalizada",
     description: "Impacto visual en espacios estratégicos",
     icon: Megaphone,
     animation: megaphoneAnim,
   },
   {
-    title: "Branding",
+    title: "Diseño de Interiores",
     description: "Construimos marcas memorables",
     icon: Brush,
     animation: goal,
   },
   {
-    title: "Diseño Creativo",
+    title: "Precios a tu alcance",
     description: "Ideas que conectan con tu audiencia",
     icon: Palette,
     animation: setting,
@@ -76,7 +76,7 @@ const cards = [
     animation: reload,
   },
   {
-    title: "Expansión Global",
+    title: "Garantía en cada trabajo",
     description: "Llevamos tu marca al siguiente nivel",
     icon: Globe,
     animation: target,

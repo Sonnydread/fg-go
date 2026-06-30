@@ -52,7 +52,7 @@ export default function ServicesGrid() {
         <div className="text-start mb-16">
           <h2 className="text-4xl md:text-6xl font-bold text-white leading-tight">    Hogar y trabajos personalizados</h2>
           <h2 className="text-4xl md:text-xl font-bold text-white leading-tight">
-            Diseñamos piezas únicas y soluciones visuales personalizadas para hogares, oficinas y proyectos especiales, combinando creatividad, detalle y acabados de alta calidad para transformar cualquier espacio en algo auténtico y memorable.
+            Diseñamos piezas únicas y soluciones visuales personalizadas para hogares, oficinas y proyectos especiales, combinando creatividad, detalle y acabados de alta calidad para transformar cualquier espacio en algo cálido y original.
           </h2>
         </div>
 

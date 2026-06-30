@@ -46,7 +46,7 @@ export default function Faqs() {
   ];
 
   return (
-    <section className="relative py-32 px-6 md:px-12 text-white overflow-hidden
+    <section id="faqs" className="relative py-32 px-6 md:px-12 text-white overflow-hidden
       bg-gradient-to-b from-[#072566] to-[#032c16]">
 
       {/* Luces de fondo */}

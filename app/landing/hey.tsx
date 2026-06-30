@@ -6,12 +6,12 @@ import { forwardRef } from "react"
 
 export default function Hey() {
   return (
-    <section className="bg-blue-700 p-4 md:px-28 md:py-20">
+    <section className="bg-blue-700 p-4 md:px-28 md:pb-20">
       <h1 className="text-5xl font-semibold text-white text-start mb-16 uppercase">Descubre más sobre nosotros</h1>
       <div className="flex flex-col gap-6 md:flex-row">
         {/* card candidates */}
         <Card
-          image="/img/grid/fro21.jpeg"
+          image="/img/grid/vin24.jpeg"
           alt="Exteriores"
           title="Exteriores"
           description="Creamos soluciones publicitarias de alto impacto para exteriores: letreros luminosos, paneles, brandeo vehicular, banderolas, viniles y estructuras visuales diseñadas para maximizar la visibilidad de tu marca en cualquier entorno."
@@ -21,7 +21,7 @@ export default function Hey() {
         />
         {/* card companiies */}
         <Card
-          image="/img/grid/vin24.jpeg"
+          image="/img/grid/fro21.jpeg"
           alt="Interiores"
           title="Interiores"
           description="Desarrollamos espacios visuales modernos para interiores, integrando branding corporativo, acrílicos, letras corpóreas, decoración comercial y acabados personalizados que fortalecen la identidad de tu negocio."

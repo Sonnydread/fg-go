@@ -1,26 +1,82 @@
 "use client";
-
 import { motion, PanInfo, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
+import ModalHogar from "./modal-hogar";
 
-const projects = [
-  { id: 1, title: "Cuadros", subtitle: "Inmobiliaria", image: "/img/hogar/cuadros.png" },
-  { id: 2, title: "Vinil Adhesivo", subtitle: "Servicios Generales", image: "/img/hogar/cocina.png" },
-  { id: 3, title: "Stickers", subtitle: "Taller Automotriz", image: "/img/hogar/vin5.jpeg" },
-  { id: 4, title: "Letras Block", subtitle: "Escuela de Buceo", image: "/img/hogar/casados.jpg" },
-  { id: 5, title: "Brandeo de paredes", subtitle: "Servicios Generales", image: "/img/hogar/avengers.jpg" },
-  { id: 6, title: "Brandeo vehicular", subtitle: "Taller Automotriz", image: "/img/hogar/camioneta.png" },
-  { id: 7, title: "Personalizados", subtitle: "Escuela de Buceo", image: "/img/hogar/letras-block.jpg" },
-]
+export interface Project {
+  // ← Agrega "export"
+  id: number;
+  title: string;
+  subtitle: string;
+  image: string;
+  gallery: string[];
+  description?: string;
+}
+
+const projects: Project[] = [
+  { 
+    id: 1, 
+    title: "Cuadros", 
+    subtitle: "Inmobiliaria", 
+    image: "/img/hogar/cuadros.png",
+    gallery: ["/img/hogar/cuadro1.jpeg", "/img/hogar/cuadro2.jpeg", "/img/hogar/cuadro3.jpeg"]
+  },
+  { 
+    id: 2, 
+    title: "Vinil Adhesivo", 
+    subtitle: "Servicios Generales", 
+    image: "/img/hogar/cocina.png",
+    gallery: ["/img/hogar/vinilo2.jpeg", "/img/hogar/vinilo1.jpeg", "/img/hogar/vinilo3.jpeg"]
+  },
+  { 
+    id: 3, 
+    title: "Stickers", 
+    subtitle: "Taller Automotriz", 
+    image: "/img/hogar/vin5.jpeg",
+    gallery: ["/img/hogar/stickers1.jpeg", "/img/hogar/stickers2.jpeg", "/img/hogar/stickers3.jpeg"]
+  },
+  { 
+    id: 4, 
+    title: "Letras Block", 
+    subtitle: "Escuela de Buceo", 
+    image: "/img/hogar/casados.jpg",
+     gallery: ["/img/hogar/block1.jpeg", "/img/hogar/block2.jpeg", "/img/hogar/block3.jpeg"]
+  },
+  { 
+    id: 5, 
+    title: "Brandeo de paredes", 
+    subtitle: "Servicios Generales", 
+    image: "/img/hogar/avengers.jpg",
+     gallery: ["/img/hogar/pared1.jpg", "/img/hogar/pared2.png", "/img/hogar/pared3.jpeg"]
+  },
+  { 
+    id: 6, 
+    title: "Brandeo vehicular", 
+    subtitle: "Taller Automotriz", 
+    image: "/img/hogar/camioneta.png",
+     gallery: ["/img/hogar/brandeo2.jpeg", "/img/hogar/brandeo1.jpeg", "/img/hogar/brandeo3.jpeg"]
+  },
+  { 
+    id: 7, 
+    title: "Personalizados", 
+    subtitle: "Escuela de Buceo", 
+    image: "/img/hogar/letras-block.jpg",
+     gallery: ["/img/hogar/personalizado3.jpeg", "/img/hogar/personalizado2.jpeg", "/img/hogar/personalizado1.png"]
+  },
+];
 
 export default function Hogar() {
   const [current, setCurrent] = useState(2);
   const [direction, setDirection] = useState(1);
   const [isDragging, setIsDragging] = useState(false);
+  
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
-  // 🔁 Autoplay
+  // Autoplay
   useEffect(() => {
     if (isDragging) return;
 
@@ -34,23 +90,26 @@ export default function Hogar() {
     };
   }, [isDragging]);
 
-  // 🧠 Posición relativa
+  const handleOpenModal = (project: Project) => {
+    setSelectedProject(project);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setSelectedProject(null);
+  };
+
   const getRelativePosition = (index: number) => {
     let diff = index - current;
-
     if (diff > projects.length / 2) diff -= projects.length;
     if (diff < -projects.length / 2) diff += projects.length;
-
     return diff;
   };
 
-  // 🖐️ Drag handler
-  const handleDragEnd = (
-    _: MouseEvent | TouchEvent | PointerEvent,
-    info: PanInfo
-  ) => {
+  // ✅ Corregido aquí
+  const handleDragEnd = (_: unknown, info: PanInfo) => {
     setIsDragging(false);
-
     const threshold = 80;
 
     if (info.offset.x < -threshold) {
@@ -71,14 +130,14 @@ export default function Hogar() {
         {/* Título */}
         <div className="text-start max-w-[80%] ml-20">
           <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tighter">
-           Hogar y trabajos personalizados
+            Hogar y trabajos personalizados
           </h2>
           <p className="text-white/70 text-2xl mt-4">
-           Diseñamos piezas únicas y soluciones visuales personalizadas para hogares, oficinas y proyectos especiales, combinando creatividad, detalle y acabados de alta calidad para transformar cualquier espacio en algo cálido y original.
+            Diseñamos piezas únicas y soluciones visuales personalizadas para hogares, oficinas y proyectos especiales, combinando creatividad, detalle y acabados de alta calidad para transformar cualquier espacio en algo cálido y original.
           </p>
         </div>
 
-        {/* 🖐️ DRAG CONTAINER */}
+        {/* Carrusel */}
         <motion.div
           className="relative w-full h-[620px] flex items-center justify-center perspective-[2000px]"
           drag="x"
@@ -89,7 +148,6 @@ export default function Hogar() {
           <AnimatePresence mode="popLayout">
             {projects.map((project, index) => {
               const position = getRelativePosition(index);
-
               if (Math.abs(position) > 2) return null;
 
               const isCenter = position === 0;
@@ -97,11 +155,7 @@ export default function Hogar() {
               return (
                 <motion.div
                   key={project.id}
-                  initial={{
-                    x: direction > 0 ? 800 : -800,
-                    opacity: 0,
-                    scale: 0.8,
-                  }}
+                  initial={{ x: direction > 0 ? 800 : -800, opacity: 0, scale: 0.8 }}
                   animate={{
                     x: position * 380,
                     rotateY: position * -32,
@@ -110,27 +164,20 @@ export default function Hogar() {
                     opacity: 1,
                     zIndex: 30 - Math.abs(position) * 5,
                   }}
-                  exit={{
-                    x: direction > 0 ? -800 : 800,
-                    opacity: 0,
-                    scale: 0.7,
-                  }}
-                  transition={{
-                    duration: 1,
-                    ease: [0.22, 1, 0.36, 1],
-                  }}
+                  exit={{ x: direction > 0 ? -800 : 800, opacity: 0, scale: 0.7 }}
+                  transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
                   className="absolute w-[560px] md:w-[620px] aspect-[16/10.5] rounded-3xl overflow-hidden border border-white/10 bg-white cursor-grab active:cursor-grabbing"
                   style={{
                     transformStyle: "preserve-3d",
                     filter: "drop-shadow(0 40px 60px rgba(0,0,0,0.6))",
                   }}
                 >
-                  <div className="relative w-full h-full pointer-events-none">
+                  <div className="relative w-full h-full">
                     <Image
                       src={project.image}
                       alt={project.title}
                       fill
-                      className="object-cover"
+                      className="object-cover pointer-events-none"
                     />
 
                     <div className="absolute bottom-0 left-0 right-0 h-2/5 bg-gradient-to-t from-black/90 via-black/60 to-transparent" />
@@ -146,7 +193,10 @@ export default function Hogar() {
                           </p>
                         </div>
 
-                        <button className="px-8 py-3 rounded-2xl bg-white/10 backdrop-blur-md border border-white/30 text-base font-medium flex items-center gap-2">
+                        <button 
+                          onClick={() => handleOpenModal(project)}
+                          className="px-8 py-3 rounded-2xl bg-white/10 backdrop-blur-md border border-white/30 text-base font-medium flex items-center gap-2 hover:bg-white/20 transition-all active:scale-95 pointer-events-auto"
+                        >
                           Ver <span className="text-xl">→</span>
                         </button>
                       </div>
@@ -169,13 +219,20 @@ export default function Hogar() {
               }}
               className={`h-3 rounded-full transition-all duration-500 ${
                 current === index
-                  ? "w-10 bg-[#36c37f] shadow-[0_0_20px_#00d4ff]"
+                  ? "w-20 bg-[#36c37f] shadow-[0_0_20px_#00d4ff]"
                   : "w-3 bg-white/30 hover:bg-white/50"
               }`}
             />
           ))}
         </div>
       </div>
+
+      {/* Modal */}
+  <ModalHogar 
+        isOpen={isModalOpen} 
+        onClose={handleCloseModal} 
+        project={selectedProject} 
+      />
     </section>
   );
 }

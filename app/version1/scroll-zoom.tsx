@@ -17,14 +17,14 @@ interface ImgItem {
 }
 
 const images: ImgItem[] = [
-  { src: "/img/cars/autoh2.jpeg", range: [-0.06, 0.2, 0.4], className: "left-18 top-28" },
-  { src: "/img/cars/autoh5.jpeg", range: [-0.04, 0.3, 0.5], className: "right-20 top-32" },
-  { src: "/img/cars/autoh20.jpeg", range: [-0.02, 0.4, 0.6], className: "left-1/4 top-1/2" },
-  { src: "/img/cars/autoh22.jpeg", range: [0.3, 0.5, 0.7], className: "right-10 bottom-20" },
-  { src: "/img/cars/autoh28.jpeg", range: [0.4, 0.6, 0.8], className: "left-1/2 top-10" },
-  { src: "/img/cars/autoh29.jpeg", range: [0.5, 0.7, 0.9], className: "right-1/3 bottom-10" },
-  { src: "/img/cars/autoh33.jpeg", range: [0.6, 0.8, 1.0], className: "left-20 bottom-20" },
-  { src: "/img/cars/autoh39.jpeg", range: [0.7, 0.9, 1.1], className: "right-10 top-10" },
+  { src: "/img/ramdom/gal3.png", range: [-0.06, 0.2, 0.4], className: "left-18 top-28" },
+  { src: "/img/ramdom/gal5.jpeg", range: [-0.04, 0.3, 0.5], className: "right-20 top-32" },
+  { src: "/img/ramdom/gal4.png", range: [-0.02, 0.4, 0.6], className: "left-1/4 top-1/2" },
+  { src: "/img/ramdom/gal7.jpeg", range: [0.3, 0.5, 0.7], className: "right-10 bottom-20" },
+  { src: "/img/ramdom/gal9.jpeg", range: [0.4, 0.6, 0.8], className: "left-1/2 top-10" },
+  { src: "/img/ramdom/gal1.png", range: [0.5, 0.7, 0.9], className: "right-1/3 bottom-10" },
+  { src: "/img/ramdom/autoh2.jpeg", range: [0.6, 0.8, 1.0], className: "left-20 bottom-20" },
+  { src: "/img/ramdom/gal2.png", range: [0.7, 0.9, 1.1], className: "right-10 top-10" },
   
 ];
 

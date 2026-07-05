@@ -83,7 +83,7 @@ export default function Hogar() {
     intervalRef.current = setInterval(() => {
       setDirection(1);
       setCurrent((prev) => (prev + 1) % projects.length);
-    }, 4800);
+    }, 2400);
 
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
@@ -125,14 +125,14 @@ export default function Hogar() {
 
   return (
     <section id="hogar" className="w-full min-h-screen flex items-center justify-center py-40 bg-gradient-to-b from-blue-700 to-green-900 relative overflow-hidden">
-      <div className="max-w-[1800px] mx-auto px-6 relative w-full">
+      <div className="max-w-[1800px] mx-auto relative w-full">
 
         {/* Título */}
-        <div className="text-start max-w-[80%] ml-20">
-          <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tighter">
+        <div className="text-start px-30"> 
+          <h2 className="text-4xl md:text-5xl font-semibold text-white tracking-tighter">
             Hogar y trabajos personalizados
           </h2>
-          <p className="text-white/70 text-2xl mt-4">
+          <p className="text-white/80 font-semibold tracking-tighter text-2xl mt-4">
             Diseñamos piezas únicas y soluciones visuales personalizadas para hogares, oficinas y proyectos especiales, combinando creatividad, detalle y acabados de alta calidad para transformar cualquier espacio en algo cálido y original.
           </p>
         </div>

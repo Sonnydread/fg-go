@@ -7,7 +7,7 @@ import { forwardRef } from "react"
 export default function Hey() {
   return (
     <section className="bg-blue-700 p-4 md:px-28 md:pb-20">
-      <h1 className="text-5xl font-semibold text-white text-start mb-16 uppercase">Descubre más sobre nosotros</h1>
+      <h1 className="text-5xl font-semibold text-white tracking-tighter text-start mb-16">Descubre más sobre nosotros...</h1>
       <div className="flex flex-col gap-6 md:flex-row">
         {/* card candidates */}
         <Card
@@ -85,11 +85,11 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
           
             <Image src={logoSrc} alt="logo" width={260} height={260} className="object-contain mb-10" />
           
-          <h3 className="mb-4 text-[54px] leading-[72px] font-medium text-white">
+          <h3 className="mb-4 text-5xl tracking-tighter font-semibold text-white">
             {title}
           </h3>
           <motion.p
-            className="mb-6 text-2xl font-normal"
+            className="mb-6 text-xl font-medium tracking-tighter"
             variants={{
               initial: { opacity: 0, y: 20 },
               hovered: { opacity: 1, y: 0 },

@@ -1,7 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { MapPin, Phone, Mail, Facebook, Instagram, Youtube } from "lucide-react";
+import Link from "next/link";
+import { SiInstagram, SiFacebook } from "react-icons/si";
+import { MapPin, Phone, Mail } from "lucide-react";
 import ContactModal from "./contact-modal";
 import { useState } from "react";
 import ButtonRotatingGradient from "../../components/ui/but";
@@ -30,7 +32,7 @@ export default function Footer() {
             <Image
               src="/img/logofb.jpg"
               alt="Logo FGGO Publicidad"
-              width={180}
+              width={240}
               height={80}
               className="object-contain"
             />
@@ -39,10 +41,10 @@ export default function Footer() {
           </div>
 
           {/* Columna 2: Dirección, Teléfonos y Email */}
-          <div className="lg:col-span-3 -ml-20 space-y-6">
-            <h4 className="text-xl font-semibold mb-4">Contacto</h4>
+          <div className="lg:col-span-3 -ml-40 space-y-6">
+            <h4 className="text-2xl font-semibold mb-4">Contacto</h4>
             
-            <ul className="space-y-5 text-sm">
+            <ul className="space-y-5 text-md">
               <li className="flex items-start gap-3">
                 <MapPin size={22} className="mt-0.5 text-green-400" />
                 <span>Av. República de Panamá N° 5527 Of. 406 – Surquillo</span>
@@ -61,8 +63,8 @@ export default function Footer() {
                   <a href="mailto:jgomez@fggopublicidad.com" className="hover:underline">
                     jgomez@fggopublicidad.com
                   </a><br />
-                  <a href="mailto:nmontezao@fggopublicidad.com" className="hover:underline">
-                    nmontezao@fggopublicidad.com
+                  <a href="mailto:nmonteza@fggopublicidad.com" className="hover:underline">
+                    nmonteza@fggopublicidad.com
                   </a>
                 </div>
               </li>
@@ -71,19 +73,16 @@ export default function Footer() {
 
          
           <div className="ml-68 flex items-center justify-center w-full flex-col">
-           <div className="flex gap-8">
-              <a href="#" target="_blank" className="hover:text-green-400 transition-colors">
-                <Facebook size={28} />
-              </a>
-              <a href="#" target="_blank" className="hover:text-green-400 transition-colors">
-                <Instagram size={28} />
-              </a>
-              <a href="#" target="_blank" className="hover:text-green-400 transition-colors">
-                <Youtube size={28} /> {/* Cambia a TikTok si prefieres un ícono específico */}
-              </a>
-            </div>
             <h4 className="text-2xl font-semibold pb-6 mt-6 text-nowrap">Consulta por una cotización:</h4>
         <ButtonRotatingGradient onClick={() => setOpen(true)} />
+           <div className="flex mt-12 gap-8">
+             <Link href="https://www.facebook.com/p/FG-go-Publicidad-Interior-y-Exterior-100048656033581/" target="_blank">
+              <SiFacebook size={28} className="cursor-pointer text-white transition hover:scale-125" />
+            </Link>
+                <Link href="https://www.instagram.com/fg_go_publicidad_/?fbclid=IwY2xjawS0MXhleHRuA2FlbQIxMABicmlkETFWZzJJWlFTVXF0OEZwYnduc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHnlwLkSoY8jX3TWJMphGzX5pf13aggmwRFJoi5t7LSNk8b0PHeZEjf3hMIlq_aem_yQD9OArUzq-dfWG0Ek0BsA" target="_blank">
+              <SiInstagram size={28} className="cursor-pointer text-white transition hover:scale-125" />
+            </Link>
+            </div>
           </div>
         </div>
 

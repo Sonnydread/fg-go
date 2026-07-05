@@ -79,7 +79,7 @@ export default function Carousel() {
     intervalRef.current = setInterval(() => {
       setDirection(1);
       setCurrent((prev) => (prev + 1) % projects.length);
-    }, 4800);
+    }, 2400);
 
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
@@ -123,12 +123,12 @@ export default function Carousel() {
 
   return (
     <>
-      <section id="corporativos" className="w-full min-h-screen flex items-center justify-center pt-40 bg-green-700 relative overflow-hidden">
-        <div className="max-w-[1800px] mx-auto px-6 relative w-full">
+      <section id="corporativos" className="w-full min-h-screen flex items-center justify-center pt-60 bg-green-700 relative overflow-hidden">
+        <div className="max-w-[1800px] mx-auto relative w-full">
           {/* Título */}
-          <div className="text-start max-w-[80%] ml-20">
-            <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tighter">Proyectos Corporativos que Impulsan Marcas</h2>
-            <p className="text-white/70 text-2xl mt-4">Diseñamos soluciones visuales de alto impacto para empresas que buscan destacar, conectar y fortalecer su presencia de marca en cada espacio.</p>
+          <div className="text-start px-30">
+            <h2 className="text-4xl md:text-5xl font-semibold text-white tracking-tighter">Proyectos Corporativos que Impulsan Marcas</h2>
+            <p className="text-white/80 text-2xl font-semibold mt-4 tracking-tighter">Diseñamos soluciones visuales de alto impacto para empresas que buscan destacar, conectar y fortalecer su presencia de marca en cada espacio.</p>
           </div>
 
           {/* 🖐️ DRAG CONTAINER */}

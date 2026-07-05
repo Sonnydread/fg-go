@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { MessageCircle } from "lucide-react";
+import CtaButton from "../../components/ui/cta-button";
 
 import {
   Accordion,
@@ -46,7 +46,7 @@ export default function Faqs() {
   ];
 
   return (
-    <section id="faqs" className="relative py-32 px-6 md:px-12 text-white overflow-hidden
+    <section id="faqs" className="relative py-32 text-white overflow-hidden
       bg-gradient-to-b from-[#072566] to-[#032c16]">
 
       {/* Luces de fondo */}
@@ -59,13 +59,12 @@ export default function Faqs() {
         pointer-events-none" />
 
       {/* Header */}
-      <div className="relative max-w-4xl mx-auto text-center mb-16">
-          <p className="text-red-700 font-bold">Sección FAQS</p>
+      <div className="relative max-w-6xl mx-auto text-center mb-16">
         <motion.h2
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="bg-linear-to-r text-6xl font-black from-[#0033A0] via-[#37b672] to-[#009846] pb-4 bg-clip-text text-transparent">
+          className="text-5xl text-start font-semibold tracking-tighter text-white pb-4">
           Preguntas Frecuentes
         </motion.h2>
 
@@ -73,7 +72,7 @@ export default function Faqs() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ delay: 0.3, duration: 0.8 }}
-          className="text-white/70 text-lg md:text-xl max-w-3xl mx-auto"
+          className="text-white/80 text-start text-lg font-semibold tracking-tighter md:text-2xl mx-auto"
         >
           Resuelve tus dudas y conoce cómo podemos ayudarte con soluciones
           publicitarias profesionales y personalizadas.
@@ -81,7 +80,7 @@ export default function Faqs() {
       </div>
 
       {/* Accordion */}
-      <div className="relative max-w-3xl mx-auto">
+      <div className="relative max-w-6xl mx-auto">
         <Accordion type="single" collapsible className="space-y-5">
           {faqs.map((faq, index) => (
             <motion.div
@@ -94,8 +93,8 @@ export default function Faqs() {
                 value={`item-${index}`}
                 className="
                   rounded-2xl
-                  border border-white/10
-                  bg-white/[0.04]
+                  border border-white/20
+                  bg-white/[0.08]
                   backdrop-blur-xl
                   shadow-[0_20px_60px_rgba(0,0,0,0.45)]
                   hover:border-green-500
@@ -104,14 +103,14 @@ export default function Faqs() {
               >
                 <AccordionTrigger
                   className="
-                    px-6 py-5 text-left text-lg font-medium text-white
+                    px-6 py-5 text-left text-2xl font-semibold tracking-tighter text-white
                     hover:text-green-500 transition-colors
                   "
                 >
                   {faq.question}
                 </AccordionTrigger>
 
-                <AccordionContent className="px-6 pb-5 text-white/70 text-base leading-relaxed">
+                <AccordionContent className="px-6 pb-5 text-white/80 text-xl tracking-tighter font-semibold leading-relaxed">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>
@@ -122,60 +121,19 @@ export default function Faqs() {
 
       {/* CTA */}
       <div className="relative z-10 flex justify-center mt-16">
-          <a
-              href="https://wa.me/51982748220?text=Hola!%20Quisiera%20más%20información%20sobre%20los%20servicios%20de%20FGGO!"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <button
-                className="group relative px-12 py-8 mt-30 rounded-full 
-                   bg-black text-white text-lg font-bold
-                   shadow-[0_10px_10px_rgba(0,0,0,0.6)]
-                   transition-all duration-300 hover:scale-[1.08]"
-              >
-                <div className="absolute -inset-[0.1px] rounded-full overflow-hidden">
-                  <div
-                    className="absolute inset-0 rounded-full animate-[spin_4s_linear_infinite]"
-                    style={{
-                      background: `conic-gradient(
-                from 0deg,
-                transparent,
-                rgba(34,197,94,0.2),
-                #22c55e,
-                #4ade80,
-                transparent
-              )`,
-                    }}
-                  />
-                </div>
-                <div
-                  className="absolute -inset-[6px] rounded-full opacity-70 blur-[10px] group-hover:opacity-100 transition-all duration-300"
-                  style={{
-                    background:
-                      "linear-gradient(90deg, #4ade80, #22c55e, #16a34a)",
-                  }}
-                />
-                <div
-                  className="absolute -inset-[14px] rounded-full opacity-50 blur-[35px] mix-blend-screen group-hover:opacity-80 transition-all duration-300"
-                  style={{
-                    background:
-                      "linear-gradient(90deg, #4ade80, #22c55e, #16a34a)",
-                  }}
-                />
-                <div
-                  className="absolute -inset-[22px] rounded-full opacity-30 blur-[60px] mix-blend-screen"
-                  style={{
-                    background: "linear-gradient(90deg, #22c55e, #4ade80)",
-                  }}
-                />
-                <div className="absolute inset-[3px] rounded-full bg-black" />
-                <div className="absolute inset-[4px] rounded-full border border-black" />
-                <span className="relative z-10 flex items-center gap-3">
-                  <MessageCircle className="text-green-500" />
-                  Escríbenos al WhatsApp
-                </span>
-              </button>
-            </a>
+       <a 
+  href="https://wa.me/51982748220?text=Hola!%20Quisiera%20más%20información%20sobre%20los%20servicios%20de%20FGGO!" 
+  target="_blank" 
+  rel="noopener noreferrer"
+  className="inline-block"
+>
+  <div className="relative group">
+    {/* Glow suave difuso */}
+    <div className="absolute -inset-8 mt-8 rounded-full bg-emerald-500 opacity-40 blur-[30px] group-hover:opacity-90 transition-opacity" />
+
+    <CtaButton />
+  </div>
+</a>
 
       </div>
     </section>

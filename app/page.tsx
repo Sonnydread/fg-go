@@ -11,6 +11,7 @@ import Hey from "./landing/hey";
 import LottieCardFlow from "./landing/lootie-grid";
 import Navbar from "./landing/navbar";
 import Hogar from "./landing/hogar";
+import { SecondCarousel } from "./landing/carousel2";
 
 export default function Page() {
   return (
@@ -22,11 +23,12 @@ export default function Page() {
       <Carousel />
       <RevealText />
       <Hey />
-         <Hogar />
+      <Hogar />
       <LottieCardFlow />
       <Faqs />
       <AutoScrollCarousel />
       <EcoCommitment />
+      <SecondCarousel />
       <Footer />
     </>
   );

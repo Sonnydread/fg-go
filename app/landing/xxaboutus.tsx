@@ -82,13 +82,13 @@ const statItem: Variants = {
             variants={statItem}
             initial="hidden"
             animate={inView ? "visible" : "hidden"}
-            className="space-y-8"
+            className="space-y-8 tracking-tighter"
           >
             <motion.h2
               initial={{ opacity: 0, y: -30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: false }}
-              className="text-white text-6xl pt-20 font-black pb-20"
+              className="text-white text-5xl pt-20 font-black pb-10"
             >
               ¿Quiénes Somos?
             </motion.h2>
@@ -107,27 +107,39 @@ const statItem: Variants = {
   variants={statsContainer}
   initial="hidden"
   animate={inView ? "visible" : "hidden"}
-  className="mt-24 flex items-center gap-8 text-lg text-white"
+  className="mt-24 grid grid-cols-3 gap-12 md:gap-4 max-w-5xl mx-auto"
 >
-  <motion.div variants={statItem}>
-    <span className="block text-center text-5xl font-bold">25+</span>
-    Años de experiencia
+  {/* Columna 1 */}
+  <motion.div 
+    variants={statItem}
+    className="flex flex-col items-center text-center"
+  >
+    <span className="block text-5xl md:text-4xl font-bold text-white mb-3">25+</span>
+    <p className="text-lg text-white/80 font-medium">Años de experiencia</p>
   </motion.div>
 
-  <motion.div variants={statItem}>
-    <span className="block text-center text-5xl font-bold">100%</span>
-    Calidad garantizada
+  {/* Columna 2 */}
+  <motion.div 
+    variants={statItem}
+    className="flex flex-col items-center text-center"
+  >
+    <span className="block text-5xl md:text-4xl font-bold text-white mb-3">100%</span>
+    <p className="text-lg text-white/80 font-medium">Calidad garantizada</p>
   </motion.div>
 
-  <motion.div variants={statItem}>
-    <span className="block text-center text-5xl font-bold">Alta</span>
-    Resolución visual
+  {/* Columna 3 */}
+  <motion.div 
+    variants={statItem}
+    className="flex flex-col items-center text-center"
+  >
+    <span className="block text-5xl md:text-4xl font-bold text-white mb-3">Muy Alta</span>
+    <p className="text-lg text-white/80 font-medium">Resolución visual</p>
   </motion.div>
 </motion.div>
           </motion.div>
 
           {/* 🔥 NUEVA COLUMNA (REEMPLAZO TOTAL) */}
-          <div className="relative h-[500px] md:h-[920px] flex items-center justify-center">
+          <div className="relative h-[500px] md:h-[780px] flex items-center justify-center">
             
             {/* Imagen grande */}
             <motion.div
@@ -189,7 +201,7 @@ const statItem: Variants = {
 
       {/* 🔹 SCROLL ROW (igual) */}
       <div>
-        <h1 className="ml-30 pb-18 text-5xl text-white font-semibold">
+        <h1 className="px-30 pb-18 text-5xl tracking-tighter text-white font-semibold">
           Nuestros Servicios Integrales
         </h1>
 

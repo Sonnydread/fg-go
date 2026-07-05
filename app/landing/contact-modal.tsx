@@ -158,7 +158,7 @@ export default function ContactModal({ open, onClose }: Props) {
                   placeholder="Tu nombre"
                   value={form.name}
                   onChange={handleChange}
-                  className="w-full p-3 rounded-lg bg-gray-300 placeholder:text-gray-600 outline-none focus:ring-2 focus:ring-[#2474c3]"
+                  className="w-full p-3 rounded-lg bg-gray-300 placeholder:text-gray-600 outline-none focus:ring-2 focus:ring-[#009846]"
                 />
 
                 <input
@@ -167,7 +167,7 @@ export default function ContactModal({ open, onClose }: Props) {
                   placeholder="Tu correo"
                   value={form.email}
                   onChange={handleChange}
-                  className="w-full p-3 rounded-lg bg-gray-300 placeholder:text-gray-600 outline-none focus:ring-2 focus:ring-[#2474c3]"
+                  className="w-full p-3 rounded-lg bg-gray-300 placeholder:text-gray-600 outline-none focus:ring-2 focus:ring-[#009846]"
                 />
 
                 <textarea
@@ -176,13 +176,13 @@ export default function ContactModal({ open, onClose }: Props) {
                   placeholder="Escribe tu mensaje..."
                   value={form.message}
                   onChange={handleChange}
-                  className="w-full p-3 rounded-lg bg-gray-300 placeholder:text-gray-600 outline-none focus:ring-2 focus:ring-[#2474c3]"
+                  className="w-full p-3 rounded-lg bg-gray-300 placeholder:text-gray-600 outline-none focus:ring-2 focus:ring-[#009846]"
                 />
 
                 <button
                   onClick={handleSubmit}
                   disabled={loading}
-                  className="w-full bg-[#2474c3] hover:bg-[#2474c3]/80 py-5 cursor-pointer rounded-lg text-white font-semibold transition"
+                  className="w-full bg-[#009846] hover:bg-[#009846]/80 py-5 cursor-pointer rounded-lg text-white font-semibold transition"
                 >
                   {loading ? "Enviando..." : "Enviar al correo"}
                 </button>

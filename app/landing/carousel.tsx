@@ -21,6 +21,10 @@ const images = [
   "/img/sliders/vin2.jpeg",
  "/img/sliders/vin7.jpeg",
   "/img/sliders/vin23.jpeg",
+  "/img/sliders/4x4.png",
+  "/img/sliders/super-alva.png",
+  "/img/sliders/bra14.jpeg",
+ "/img/sliders/bra28.jpeg",
 ];
 export function AutoScrollCarousel() {
   return (

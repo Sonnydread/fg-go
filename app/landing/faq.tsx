@@ -59,12 +59,12 @@ export default function Faqs() {
         pointer-events-none" />
 
       {/* Header */}
-      <div className="relative max-w-6xl mx-auto text-center mb-16">
+      <div className="relative max-w-6xl mx-auto text-center md:px-0 px-6 md:mb-16 mb-10">
         <motion.h2
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-5xl text-start font-semibold tracking-tighter text-white pb-4">
+          className="md:text-5xl text-3xl text-start font-semibold tracking-tighter text-white pb-4">
           Preguntas Frecuentes
         </motion.h2>
 
@@ -72,7 +72,7 @@ export default function Faqs() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ delay: 0.3, duration: 0.8 }}
-          className="text-white/80 text-start text-lg font-semibold tracking-tighter md:text-2xl mx-auto"
+          className="text-white/80 md:text-start text-base text-justify font-semibold tracking-tighter md:text-2xl mx-auto"
         >
           Resuelve tus dudas y conoce cómo podemos ayudarte con soluciones
           publicitarias profesionales y personalizadas.
@@ -80,7 +80,7 @@ export default function Faqs() {
       </div>
 
       {/* Accordion */}
-      <div className="relative max-w-6xl mx-auto">
+      <div className="relative max-w-6xl md:mx-auto mx-6">
         <Accordion type="single" collapsible className="space-y-5">
           {faqs.map((faq, index) => (
             <motion.div
@@ -103,14 +103,14 @@ export default function Faqs() {
               >
                 <AccordionTrigger
                   className="
-                    px-6 py-5 text-left text-2xl font-semibold tracking-tighter text-white
+                    px-6 py-5 text-left md:text-2xl text-base font-semibold tracking-tighter text-white
                     hover:text-green-500 transition-colors
                   "
                 >
                   {faq.question}
                 </AccordionTrigger>
 
-                <AccordionContent className="px-6 pb-5 text-white/80 text-xl tracking-tighter font-semibold leading-relaxed">
+                <AccordionContent className="px-6 pb-5 text-white/80 md:text-xl text-base tracking-tighter font-semibold leading-relaxed">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>

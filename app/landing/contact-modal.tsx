@@ -2,14 +2,22 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect, useRef, ChangeEvent } from "react";
+import { useState, useEffect, useRef, ChangeEvent, useMemo } from "react";
 import { createPortal } from "react-dom";
 import { X } from "lucide-react";
 
 interface FormData {
   name: string;
+  celular: string;
   email: string;
   message: string;
+}
+
+interface FormErrors {
+  name?: string;
+  celular?: string;
+  email?: string;
+  message?: string;
 }
 
 interface Props {
@@ -23,32 +31,32 @@ export default function ContactModal({ open, onClose }: Props) {
 
   const [form, setForm] = useState<FormData>({
     name: "",
+    celular: "",
     email: "",
     message: "",
   });
+
+  const [errors, setErrors] = useState<FormErrors>({});
+  const [touched, setTouched] = useState<Record<string, boolean>>({});
 
   const modalRef = useRef<HTMLDivElement>(null);
 
   // ✅ evitar SSR error
   useEffect(() => {
-  setMounted(true);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-}, []);
+    setMounted(true);
+  }, []);
 
   // 🔒 bloquear scroll + ESC + focus trap
   useEffect(() => {
     if (!open) return;
 
-    // bloquear scroll
     document.body.style.overflow = "hidden";
 
     const handleKeyDown = (e: KeyboardEvent) => {
-      // cerrar con ESC
       if (e.key === "Escape") {
         onClose();
       }
 
-      // focus trap
       if (e.key === "Tab") {
         const focusable = modalRef.current?.querySelectorAll<
           HTMLInputElement | HTMLTextAreaElement | HTMLButtonElement
@@ -75,7 +83,6 @@ export default function ContactModal({ open, onClose }: Props) {
 
     window.addEventListener("keydown", handleKeyDown);
 
-    // focus inicial
     setTimeout(() => {
       const firstInput = modalRef.current?.querySelector("input");
       firstInput?.focus();
@@ -87,27 +94,142 @@ export default function ContactModal({ open, onClose }: Props) {
     };
   }, [open, onClose]);
 
+  // Resetear formulario al cerrar
+  useEffect(() => {
+    if (!open) {
+      setForm({ name: "", celular: "", email: "", message: "" });
+      setErrors({});
+      setTouched({});
+      setLoading(false);
+    }
+  }, [open]);
+
+  // ─── VALIDACIONES ───────────────────────────────────────────────
+  const validateField = (name: keyof FormData, value: string): string | undefined => {
+    const trimmed = value.trim();
+
+    switch (name) {
+      case "name":
+        if (!trimmed) return "El nombre es obligatorio";
+        if (trimmed.length < 2) return "El nombre debe tener al menos 2 caracteres";
+        if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]+$/.test(trimmed))
+          return "Solo se permiten letras y espacios";
+        break;
+
+      case "celular":
+        if (!trimmed) return "El celular es obligatorio";
+        const cleaned = trimmed.replace(/[\s\-()]/g, "");
+        if (!/^(\+?51)?9\d{8}$/.test(cleaned)) {
+          return "Ingresa un celular peruano válido (ej: 999 999 999)";
+        }
+        break;
+
+      case "email":
+        if (!trimmed) return "El correo es obligatorio";
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmed)) {
+          return "Ingresa un correo electrónico válido";
+        }
+        break;
+
+      case "message":
+        if (!trimmed) return "El mensaje es obligatorio";
+        if (trimmed.length < 10) return "El mensaje debe tener al menos 10 caracteres";
+        break;
+    }
+
+    return undefined;
+  };
+
+  // Calcula si el formulario está completamente válido
+  const isFormValid = useMemo(() => {
+    return (Object.keys(form) as (keyof FormData)[]).every(
+      (key) => !validateField(key, form[key])
+    );
+  }, [form]);
+
+  const validateForm = (): boolean => {
+    const newErrors: FormErrors = {};
+
+    (Object.keys(form) as (keyof FormData)[]).forEach((key) => {
+      const error = validateField(key, form[key]);
+      if (error) newErrors[key] = error;
+    });
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  // ─── HANDLERS ───────────────────────────────────────────────────
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
+
+    if (touched[name]) {
+      const error = validateField(name as keyof FormData, value);
+      setErrors((prev) => ({
+        ...prev,
+        [name]: error,
+      }));
+    }
+  };
+
+  const handleBlur = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setTouched((prev) => ({ ...prev, [name]: true }));
+
+    const error = validateField(name as keyof FormData, value);
+    setErrors((prev) => ({
+      ...prev,
+      [name]: error,
+    }));
   };
 
   const handleSubmit = async () => {
-    setLoading(true);
-
-    await fetch("/api/contact", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(form),
+    setTouched({
+      name: true,
+      celular: true,
+      email: true,
+      message: true,
     });
 
-    setLoading(false);
-    onClose();
+    if (!validateForm()) return;
+
+    setLoading(true);
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...form,
+          name: form.name.trim(),
+          celular: form.celular.trim(),
+          email: form.email.trim(),
+          message: form.message.trim(),
+        }),
+      });
+
+      if (!res.ok) throw new Error("Error al enviar");
+
+      onClose();
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   if (!mounted) return null;
+
+  const inputClass = (field: keyof FormErrors) =>
+    `w-full p-3 rounded-lg bg-gray-300 placeholder:text-gray-600 outline-none transition
+     focus:ring-2 ${
+       errors[field]
+         ? "ring-2 ring-red-500 focus:ring-red-500"
+         : "focus:ring-[#009846]"
+     }`;
 
   return createPortal(
     <AnimatePresence>
@@ -140,49 +262,106 @@ export default function ContactModal({ open, onClose }: Props) {
               <button
                 onClick={onClose}
                 className="absolute right-4 top-4 text-gray-400 cursor-pointer hover:text-[#2474c3] p-2 rounded-full hover:bg-white/10"
+                aria-label="Cerrar"
               >
                 <X size={22} />
               </button>
 
               <h2 className="text-2xl md:text-3xl font-bold mb-4 pr-8">
-                Contáctame
+                Contáctanos
               </h2>
 
-              <p className="text-black mb-6 text-lg font-semibold">
-                Envíame un mensaje para resolver tus dudas.
+              <p className="text-black mb-6 md:text-lg text-sm font-semibold">
+                Envíanos un mensaje para resolver tus dudas.
               </p>
 
               <div className="space-y-4">
-                <input
-                  name="name"
-                  placeholder="Tu nombre"
-                  value={form.name}
-                  onChange={handleChange}
-                  className="w-full p-3 rounded-lg bg-gray-300 placeholder:text-gray-600 outline-none focus:ring-2 focus:ring-[#009846]"
-                />
+                {/* Nombre */}
+                <div>
+                  <input
+                    name="name"
+                    placeholder="Tu nombre"
+                    value={form.name}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    className={inputClass("name")}
+                    autoComplete="name"
+                  />
+                  {errors.name && (
+                    <p className="mt-1.5 text-sm text-red-600 font-medium">
+                      {errors.name}
+                    </p>
+                  )}
+                </div>
 
-                <input
-                  name="email"
-                  type="email"
-                  placeholder="Tu correo"
-                  value={form.email}
-                  onChange={handleChange}
-                  className="w-full p-3 rounded-lg bg-gray-300 placeholder:text-gray-600 outline-none focus:ring-2 focus:ring-[#009846]"
-                />
+                {/* Celular */}
+                <div>
+                  <input
+                    name="celular"
+                    placeholder="+51 999 999 999"
+                    value={form.celular}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    className={inputClass("celular")}
+                    autoComplete="tel"
+                    inputMode="tel"
+                  />
+                  {errors.celular && (
+                    <p className="mt-1.5 text-sm text-red-600 font-medium">
+                      {errors.celular}
+                    </p>
+                  )}
+                </div>
 
-                <textarea
-                  name="message"
-                  rows={4}
-                  placeholder="Escribe tu mensaje..."
-                  value={form.message}
-                  onChange={handleChange}
-                  className="w-full p-3 rounded-lg bg-gray-300 placeholder:text-gray-600 outline-none focus:ring-2 focus:ring-[#009846]"
-                />
+                {/* Email */}
+                <div>
+                  <input
+                    name="email"
+                    type="email"
+                    placeholder="Tu correo"
+                    value={form.email}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    className={inputClass("email")}
+                    autoComplete="email"
+                  />
+                  {errors.email && (
+                    <p className="mt-1.5 text-sm text-red-600 font-medium">
+                      {errors.email}
+                    </p>
+                  )}
+                </div>
 
+                {/* Mensaje */}
+                <div>
+                  <textarea
+                    name="message"
+                    rows={4}
+                    placeholder="Escribe tu mensaje..."
+                    value={form.message}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    className={inputClass("message")}
+                  />
+                  {errors.message && (
+                    <p className="mt-1.5 text-sm text-red-600 font-medium">
+                      {errors.message}
+                    </p>
+                  )}
+                </div>
+
+                {/* BOTÓN */}
                 <button
                   onClick={handleSubmit}
-                  disabled={loading}
-                  className="w-full bg-[#009846] hover:bg-[#009846]/80 py-5 cursor-pointer rounded-lg text-white font-semibold transition"
+                  disabled={loading || !isFormValid}
+                  className={`
+                    w-full py-5 rounded-lg font-semibold transition
+                    ${
+                      loading || !isFormValid
+                        ? "bg-gray-400 text-gray-200 opacity-70 cursor-not-allowed"
+                        : "bg-[#009846] hover:bg-[#009846]/80 text-white cursor-pointer"
+                    }
+                  `}
                 >
                   {loading ? "Enviando..." : "Enviar al correo"}
                 </button>

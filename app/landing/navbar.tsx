@@ -7,7 +7,7 @@ import { SiInstagram, SiFacebook } from "react-icons/si";
 import { usePathname } from "next/navigation";
 import { useRef } from "react";
 import { motion, useScroll, useMotionValueEvent, AnimatePresence, Variants } from "framer-motion";
-import { Menu, X, Play } from "lucide-react";
+import { Menu, X, Leaf } from "lucide-react";
 import { Button } from "../../components/ui/button";
 
 const navItems = [
@@ -15,7 +15,7 @@ const navItems = [
   { name: "Nosotros", href: "#nosotros" },
   { name: "Corporativos", href: "#corporativos" },
   { name: "Hogar", href: "#hogar" },
-  { name: "Faq´s", href: "#faqs" },
+  { name: "Preguntas Frecuentes", href: "#faqs" },
   { name: "Contáctanos", href: "#footer" },
 ];
 
@@ -29,12 +29,6 @@ export default function Navbar() {
   const { scrollY } = useScroll();
   const [hidden, setHidden] = useState(false);
   const [isMenuOpen, setMenuOpen] = useState(false);
-  const [mobilePosition, setMobilePosition] = useState({
-    top: 0,
-    height: 0,
-    opacity: 0,
-  });
-
   const [selectedMobile, setSelectedMobile] = useState(pathname);
   const [isFirstRender, setIsFirstRender] = useState(true);
 
@@ -50,7 +44,7 @@ export default function Navbar() {
   });
 
   const variants: Variants = {
-    visible: { 
+    visible: {
       y: 0,
       transition: {
         duration: isFirstRender ? 0.5 : 0.3,
@@ -65,11 +59,11 @@ export default function Navbar() {
     },
   };
 
-  const onPageChange = () => {
-    setTimeout(() => {
-      setMenuOpen(false);
-    }, 200);
-  };
+  // const onPageChange = () => {
+  //   setTimeout(() => {
+  //     setMenuOpen(false);
+  //   }, 200);
+  // };
 
   return (
     <>
@@ -86,7 +80,7 @@ export default function Navbar() {
                 opacity: 0,
               }))
             }
-            className="relative flex flex-1 rounded-full justify-center border-[1.8px] p-1 gap-2"
+            className="relative flex w-fit mx-auto rounded-full justify-center border py-1.5 gap-2 px-1"
           >
             {navItems.map((item) => (
               <NavItem key={item.name} href={item.href} pathname={pathname} setPosition={setPosition}>
@@ -107,40 +101,30 @@ export default function Navbar() {
         </div>
       </motion.div>
       {/* Mobile Navbar */}
-      <motion.div variants={variants} animate={hidden ? "hidden" : "visible"} initial="visible" onAnimationComplete={() => setIsFirstRender(false)} className="fixed top-0 left-0 z-50 w-full bg-black px-4 py-4 md:hidden">
+      <motion.div variants={variants} animate={hidden ? "hidden" : "visible"} initial="visible" onAnimationComplete={() => setIsFirstRender(false)} className="fixed top-0 left-0 z-50 w-full bg-black/40 px-4 py-4 backdrop-blur-sm md:hidden">
         <div className="flex w-full items-center justify-between">
           <Link href="/">
-            <Image src="/img/navbar/Xolide-white.svg" alt="Navbar logo" width={123} height={16} className="object-cover" />
+            <Image src="/img/logo/logo-hero.png" alt="Navbar logo" width={100} height={16} className="object-cover" />
           </Link>
-          <Button className="h-10 gap-2 rounded-xl bg-black/80 px-3 text-white backdrop-blur-md" variant="outline" onClick={() => setMenuOpen(!isMenuOpen)} aria-label="Toggle navigation menu" aria-expanded={isMenuOpen}>
+          <Button className="h-10 gap-2 rounded-xl bg-green-700/70 px-3 text-white backdrop-blur-md" variant="outline" onClick={() => setMenuOpen(!isMenuOpen)} aria-label="Toggle navigation menu" aria-expanded={isMenuOpen}>
             {isMenuOpen ? <X className="size-5 text-white/60" /> : <Menu className="size-5 text-white/60" />}
             <span>{isMenuOpen ? "Close" : "Menu"}</span>
           </Button>
         </div>
       </motion.div>
       {/* Mobile Menu */}
-      {/* Mobile Menu */}
       <AnimatePresence>
         {isMenuOpen && (
-          <motion.div key="menu" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-[100] bg-black/80 backdrop-blur-3xl md:hidden">
+          <motion.div key="menu" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-[100] bg-green-900/70 backdrop-blur-xl px-6 ml-4 md:hidden">
             {/* Botón cerrar */}
             <Button size="icon" variant="ghost" onClick={() => setMenuOpen(false)} className="absolute right-6 top-6 h-12 w-12 rounded-full border border-white/10 bg-white/5 backdrop-blur-xl hover:border-green-500 hover:bg-green-500/10">
               <X className="h-6 w-6 text-white" />
             </Button>
             <div className="flex h-full items-center justify-center">
-              <ul
-                onMouseLeave={() =>
-                  setMobilePosition((prev) => ({
-                    ...prev,
-                    opacity: 0,
-                  }))
-                }
-                className="relative flex w-full max-w-sm flex-col gap-3"
-              >
+              <ul className="relative flex w-full items-start max-w-sm flex-col gap-3">
                 {navItems.map((item) => (
-                  <MobileNavItem key={item.href} href={item.href} label={item.name} selected={selectedMobile} setSelected={setSelectedMobile} setPosition={setMobilePosition} closeMenu={() => setMenuOpen(false)} />
+                  <MobileNavItem key={item.href} href={item.href} label={item.name} selected={selectedMobile} setSelected={setSelectedMobile} closeMenu={() => setMenuOpen(false)} />
                 ))}
-                <MobileCursor position={mobilePosition} />
               </ul>
             </div>
           </motion.div>
@@ -150,27 +134,27 @@ export default function Navbar() {
   );
 }
 
-interface MenuItemProps {
-  href: string;
-  label: string;
-  isActive: boolean;
-  delay: number;
-  onClick?: () => void;
-  className?: string;
-}
+// interface MenuItemProps {
+//   href: string;
+//   label: string;
+//   isActive: boolean;
+//   delay: number;
+//   onClick?: () => void;
+//   className?: string;
+// }
 
-function MenuItem({ href, label, isActive, delay, onClick, className }: MenuItemProps) {
-  return (
-    <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay, duration: 0.3 }}>
-      <Link href={href} className="relative block" onClick={onClick}>
-        {isActive && <Play className="absolute top-1/2 -left-6 size-5 -translate-y-1/2 text-[#FF5F2A]" />}
-        <Button variant="link" className={`font-space-grotesk px-0 text-3xl font-bold text-white ${className}`}>
-          {label}
-        </Button>
-      </Link>
-    </motion.div>
-  );
-}
+// function MenuItem({ href, label, isActive, delay, onClick, className }: MenuItemProps) {
+//   return (
+//     <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay, duration: 0.3 }}>
+//       <Link href={href} className="relative block" onClick={onClick}>
+//         {isActive && <Leaf className="absolute top-1/2 -left-6 size-5 -translate-y-1/2 text-[#FF5F2A]" />}
+//         <Button variant="link" className={`font-space-grotesk px-0 text-3xl font-bold text-white ${className}`}>
+//           {label}
+//         </Button>
+//       </Link>
+//     </motion.div>
+//   );
+// }
 
 interface NavItemProps {
   children: React.ReactNode;
@@ -204,7 +188,7 @@ function NavItem({ children, href, pathname, setPosition }: NavItemProps) {
       }}
       className="relative z-10"
     >
-      <Link href={href} className={`block px-6 py-3 text-xl font-semibold uppercase transition duration-300 mix-blend-difference ${pathname === href ? "text-white" : "text-white"}`}>
+      <Link href={href} className={`block px-6 py-3 text-md font-semibold uppercase transition duration-300 mix-blend-difference ${pathname === href ? "text-white" : "text-white"}`}>
         {children}
       </Link>
     </li>
@@ -238,77 +222,28 @@ interface MobileNavItemProps {
   label: string;
   selected: string;
   setSelected: React.Dispatch<React.SetStateAction<string>>;
-  setPosition: React.Dispatch<
-    React.SetStateAction<{
-      top: number;
-      height: number;
-      opacity: number;
-    }>
-  >;
   closeMenu: () => void;
 }
 
-function MobileNavItem({ href, label, selected, setSelected, setPosition, closeMenu }: MobileNavItemProps) {
-  const ref = useRef<HTMLLIElement>(null);
-
+function MobileNavItem({ href, label, selected, setSelected, closeMenu }: MobileNavItemProps) {
   return (
-    <li ref={ref} className="relative z-10">
+    <li className="relative z-10">
       <Link
         href={href}
         onClick={(e) => {
           e.preventDefault();
-
-          if (!ref.current) return;
-
           setSelected(href);
-
-          setPosition({
-            top: ref.current.offsetTop,
-            height: ref.current.offsetHeight,
-            opacity: 1,
-          });
 
           setTimeout(() => {
             closeMenu();
             window.location.href = href;
           }, 220);
         }}
-        className="flex justify-center rounded-full px-8 py-5 text-3xl font-bold uppercase text-white mix-blend-difference"
+        className="relative flex items-center justify-center px-8 py-5 text-xl font-bold uppercase text-white mix-blend-difference"
       >
+        {selected === href && <Leaf className="absolute top-1/2 -left-2 size-5 -translate-y-1/2 text-green-500" />}
         {label}
       </Link>
     </li>
-  );
-}
-
-function MobileCursor({
-  position,
-}: {
-  position: {
-    top: number;
-    height: number;
-    opacity: number;
-  };
-}) {
-  return (
-    <motion.div
-      animate={position}
-      transition={{
-        type: "spring",
-        stiffness: 350,
-        damping: 30,
-      }}
-      className="
-        absolute
-        left-0
-        w-full
-        rounded-full
-        bg-gradient-to-r
-        from-green-700
-        via-green-600
-        to-green-500
-        shadow-[0_0_40px_rgba(34,197,94,0.45)]
-      "
-    />
   );
 }

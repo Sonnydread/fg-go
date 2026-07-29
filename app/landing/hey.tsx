@@ -7,7 +7,7 @@ import { forwardRef } from "react"
 export default function Hey() {
   return (
     <section className="bg-blue-700 p-4 md:px-28 md:pb-20">
-      <h1 className="text-5xl font-semibold text-white tracking-tighter text-start mb-16">Descubre más sobre nosotros...</h1>
+      <h1 className="md:text-5xl text-3xl font-semibold text-white tracking-tighter text-start md:mb-16 mb-10">Descubre más sobre nosotros...</h1>
       <div className="flex flex-col gap-6 md:flex-row">
         {/* card candidates */}
         <Card
@@ -61,7 +61,7 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
         hovered: { flexBasis: "150%" },
       }}
     >
-      <div className="relative h-[208px] overflow-hidden md:h-[600px]">
+      <div className="relative h-[280px] overflow-hidden md:h-[600px]">
         <MotionImage
           src={image}
           fill
@@ -89,7 +89,7 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
             {title}
           </h3>
           <motion.p
-            className="mb-6 text-xl font-medium tracking-tighter"
+            className="mb-6 text-xl font-medium text-justify tracking-tighter"
             variants={{
               initial: { opacity: 0, y: 20 },
               hovered: { opacity: 1, y: 0 },
@@ -99,11 +99,11 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
           </motion.p>
         </motion.div>
       </div>
-      <div className={`${bgColor} px-4 py-6 md:hidden`}>
-        <h3 className="text-[28px] leading-9 font-medium text-white">
+      <div className={`${bgColor} px-4 md:py-6 py-4 md:hidden`}>
+        <h3 className="text-[28px] md:block hidden leading-9 md:font-medium font-black text-white">
           {title}
         </h3>
-        <p className="mt-2 max-w-[80%] text-xl leading-6 font-semibold">
+        <p className="md:mt-2 md:max-w-[80%] md:text-xl text-base leading-6 text-justify flex font-semibold">
           {description}
         </p>
       </div>

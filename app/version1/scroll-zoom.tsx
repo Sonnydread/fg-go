@@ -17,14 +17,14 @@ interface ImgItem {
 }
 
 const images: ImgItem[] = [
-  { src: "/img/ramdom/gal3.png", range: [-0.06, 0.2, 0.4], className: "left-18 top-28" },
-  { src: "/img/ramdom/gal5.jpeg", range: [-0.04, 0.3, 0.5], className: "right-20 top-32" },
-  { src: "/img/ramdom/gal4.png", range: [-0.02, 0.4, 0.6], className: "left-1/4 top-1/2" },
+  { src: "/img/ramdom/gal3.png", range: [-0.06, 0.2, 0.4], className: "md:left-18 md:top-28 top-10 left-12" },
+  { src: "/img/ramdom/gal5.jpeg", range: [-0.04, 0.3, 0.5], className: "md:right-20 md:top-32 right-2 top-33" },
+  { src: "/img/ramdom/gal4.png", range: [-0.02, 0.4, 0.6], className: "md:left-1/4 md:top-1/2 left-10 top-66" },
   { src: "/img/ramdom/gal7.jpeg", range: [0.3, 0.5, 0.7], className: "right-10 bottom-20" },
   { src: "/img/ramdom/gal9.jpeg", range: [0.4, 0.6, 0.8], className: "left-1/2 top-10" },
-  { src: "/img/ramdom/gal1.png", range: [0.5, 0.7, 0.9], className: "right-1/3 bottom-10" },
+  { src: "/img/ramdom/gal1.png", range: [0.5, 0.7, 0.9], className: "md:right-1/3 md:bottom-10 bottom-60 right-34" },
   { src: "/img/ramdom/autoh2.jpeg", range: [0.6, 0.8, 1.0], className: "left-20 bottom-20" },
-  { src: "/img/ramdom/gal2.png", range: [0.7, 0.9, 1.1], className: "right-10 top-10" },
+  { src: "/img/ramdom/gal2.png", range: [0.7, 0.9, 1.1], className: "md:right-10 md:top-10 top-20 right-30" },
   
 ];
 

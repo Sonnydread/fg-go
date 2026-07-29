@@ -123,16 +123,16 @@ export default function Carousel() {
 
   return (
     <>
-      <section id="corporativos" className="w-full min-h-screen flex items-center justify-center pt-60 bg-green-700 relative overflow-hidden">
+      <section id="corporativos" className="w-full min-h-screen flex items-center justify-center md:pt-60 bg-green-700 relative overflow-hidden">
         <div className="max-w-[1800px] mx-auto relative w-full">
           {/* Título */}
-          <div className="text-start px-30">
-            <h2 className="text-4xl md:text-5xl font-semibold text-white tracking-tighter">Proyectos Corporativos que Impulsan Marcas</h2>
-            <p className="text-white/80 text-2xl font-semibold mt-4 tracking-tighter">Diseñamos soluciones visuales de alto impacto para empresas que buscan destacar, conectar y fortalecer su presencia de marca en cada espacio.</p>
+          <div className="text-start md:px-30 px-6">
+            <h2 className="text-3xl md:text-5xl font-semibold text-white tracking-tighter">Proyectos Corporativos que Impulsan Marcas</h2>
+            <p className="text-white/80 md:text-2xl text-base font-semibold mt-4 tracking-tighter">Diseñamos soluciones visuales de alto impacto para empresas que buscan destacar, conectar y fortalecer su presencia de marca en cada espacio.</p>
           </div>
 
           {/* 🖐️ DRAG CONTAINER */}
-          <motion.div className="relative w-full h-[620px] flex items-center justify-center perspective-[2000px]" drag="x" dragConstraints={{ left: 0, right: 0 }} onDragStart={() => setIsDragging(true)} onDragEnd={handleDragEnd}>
+          <motion.div className="relative w-full md:h-[620px] h-[400px] flex items-center justify-center perspective-[2000px]" drag="x" dragConstraints={{ left: 0, right: 0 }} onDragStart={() => setIsDragging(true)} onDragEnd={handleDragEnd}>
             <AnimatePresence mode="popLayout">
               {projects.map((project, index) => {
                 const position = getRelativePosition(index);
@@ -166,22 +166,22 @@ export default function Carousel() {
                       duration: 1,
                       ease: [0.22, 1, 0.36, 1],
                     }}
-                    className="absolute w-[560px] md:w-[620px] aspect-[16/10.5] rounded-3xl overflow-hidden border border-white/10 bg-white cursor-grab"
+                    className="absolute w-[360px] md:w-[620px] aspect-[16/10.5] rounded-3xl overflow-hidden border border-white/10 bg-white cursor-grab"
                     style={{
                       transformStyle: "preserve-3d",
                       filter: "drop-shadow(0 40px 60px rgba(0,0,0,0.6))",
                     }}
                   >
                     <div className="relative w-full h-full pointer-events-none">
-                      <Image src={project.image} alt={project.title} fill className="object-cover" />
+                      <Image src={project.image} alt={project.title} fill className="object-cover md:opacity-100 opacity-70" />
 
                       <div className="absolute bottom-0 left-0 right-0 h-2/5 bg-gradient-to-t from-black/90 via-black/60 to-transparent" />
 
                       <div className="absolute bottom-0 left-0 right-0 p-8 text-white z-10">
                         <div className="flex items-end justify-between">
                           <div>
-                            <h3 className="text-3xl font-semibold leading-none">{project.title}</h3>
-                            <p className="text-white/80 text-lg mt-2">{project.subtitle}</p>
+                            <h3 className="md:text-3xl text-lg font-black md:font-semibold leading-none">{project.title}</h3>
+                            <p className="md:text-white/80 text-white md:text-lg md:block hidden text-base mt-2">{project.subtitle}</p>
                           </div>
 
                           <button
@@ -189,9 +189,18 @@ export default function Carousel() {
                               e.stopPropagation();
                               openModal(project);
                             }}
-                            className="pointer-events-auto px-8 py-3 cursor-pointer rounded-2xl bg-white/10 backdrop-blur-md border border-white/30 text-base font-medium flex items-center gap-2 z-20"
+                            className="pointer-events-auto md:px-8 px-2 md:py-3 py-1 cursor-pointer rounded-2xl bg-white/10 backdrop-blur-md border border-white/30 md:flex hidden md:text-base text-sm text-nowrap font-medium items-center gap-2 z-20"
                           >
                             Ver más imágenes
+                          </button>
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              openModal(project);
+                            }}
+                            className="pointer-events-auto md:hidden md:px-8 px-2 md:py-3 py-1 cursor-pointer rounded-md bg-white/10 backdrop-blur-md border border-white/30 md:text-base text-sm text-nowrap font-medium flex items-center gap-2 z-20"
+                          >
+                            Ver más
                           </button>
                         </div>
                       </div>

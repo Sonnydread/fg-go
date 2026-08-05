@@ -18,7 +18,7 @@ export default function ModalCorporativo({ isOpen, onClose, project }: Props) {
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          className="fixed inset-0 z-[99999]"
+          className="fixed inset-0 z-99999"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -39,7 +39,7 @@ export default function ModalCorporativo({ isOpen, onClose, project }: Props) {
                 bg-white w-full max-w-6xl 
                 rounded-2xl md:rounded-3xl 
                 overflow-hidden shadow-2xl relative 
-                max-h-[92vh] md:max-h-[100vh] 
+                max-h-[92vh] md:max-h-screen 
                 flex flex-col
               "
               onClick={(e) => e.stopPropagation()}
@@ -63,7 +63,7 @@ export default function ModalCorporativo({ isOpen, onClose, project }: Props) {
               <div className="grid md:grid-cols-2 flex-1 min-h-0 overflow-y-auto">
                 
                 {/* Columna izquierda - Imagen principal */}
-                <div className="relative h-[260px] sm:h-[320px] md:h-auto md:min-h-[480px] bg-black shrink-0">
+                <div className="relative h-65 sm:h-80 md:h-auto md:min-h-120 bg-black shrink-0">
                   <Image
                     src={project.gallery[0] || project.image}
                     alt={project.title}
@@ -89,7 +89,7 @@ export default function ModalCorporativo({ isOpen, onClose, project }: Props) {
 
                     {/* Dos imágenes inferiores */}
                     <div className="grid grid-cols-2 bg-gray-100">
-                      <div className="relative aspect-[4/3] bg-gray-200">
+                      <div className="relative aspect-4/3 bg-gray-200">
                         <Image
                           src={project.gallery[2] || project.image}
                           alt={`${project.title} - vista 2`}
@@ -97,7 +97,7 @@ export default function ModalCorporativo({ isOpen, onClose, project }: Props) {
                           className="object-cover"
                         />
                       </div>
-                      <div className="relative aspect-[4/3] bg-gray-200">
+                      <div className="relative aspect-4/3 bg-gray-200">
                         <Image
                           src={project.gallery[3] || project.image}
                           alt={`${project.title} - vista 3`}

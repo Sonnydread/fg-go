@@ -15,11 +15,11 @@ export interface Project {
   description?: string;
 }
 
-interface Props {
-  isOpen: boolean;
-  onClose: () => void;
-  project: Project | null;
-}
+// interface Props {
+//   isOpen: boolean;
+//   onClose: () => void;
+//   project: Project | null;
+// }
 
 const projects: Project[] = [
   {
@@ -124,7 +124,7 @@ export default function Carousel() {
   return (
     <>
       <section id="corporativos" className="w-full min-h-screen flex items-center justify-center md:pt-60 bg-green-700 relative overflow-hidden">
-        <div className="max-w-[1800px] mx-auto relative w-full">
+        <div className="max-w-450 mx-auto relative w-full">
           {/* Título */}
           <div className="text-start md:px-30 px-6">
             <h2 className="text-3xl md:text-5xl font-semibold text-white tracking-tighter">Proyectos Corporativos que Impulsan Marcas</h2>
@@ -132,7 +132,7 @@ export default function Carousel() {
           </div>
 
           {/* 🖐️ DRAG CONTAINER */}
-          <motion.div className="relative w-full md:h-[620px] h-[400px] flex items-center justify-center perspective-[2000px]" drag="x" dragConstraints={{ left: 0, right: 0 }} onDragStart={() => setIsDragging(true)} onDragEnd={handleDragEnd}>
+          <motion.div className="relative w-full md:h-155 h-100 flex items-center justify-center perspective-[2000px]" drag="x" dragConstraints={{ left: 0, right: 0 }} onDragStart={() => setIsDragging(true)} onDragEnd={handleDragEnd}>
             <AnimatePresence mode="popLayout">
               {projects.map((project, index) => {
                 const position = getRelativePosition(index);
@@ -166,7 +166,7 @@ export default function Carousel() {
                       duration: 1,
                       ease: [0.22, 1, 0.36, 1],
                     }}
-                    className="absolute w-[360px] md:w-[620px] aspect-[16/10.5] rounded-3xl overflow-hidden border border-white/10 bg-white cursor-grab"
+                    className="absolute w-90 md:w-155 aspect-[16/10.5] rounded-3xl overflow-hidden border border-white/10 bg-white cursor-grab"
                     style={{
                       transformStyle: "preserve-3d",
                       filter: "drop-shadow(0 40px 60px rgba(0,0,0,0.6))",
@@ -175,7 +175,7 @@ export default function Carousel() {
                     <div className="relative w-full h-full pointer-events-none">
                       <Image src={project.image} alt={project.title} fill className="object-cover md:opacity-100 opacity-70" />
 
-                      <div className="absolute bottom-0 left-0 right-0 h-2/5 bg-gradient-to-t from-black/90 via-black/60 to-transparent" />
+                      <div className="absolute bottom-0 left-0 right-0 h-2/5 bg-linear-to-t from-black/90 via-black/60 to-transparent" />
 
                       <div className="absolute bottom-0 left-0 right-0 p-8 text-white z-10">
                         <div className="flex items-end justify-between">

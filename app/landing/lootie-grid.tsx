@@ -3,7 +3,7 @@
 import { useState, useMemo, useEffect } from "react";
 import Lottie from "lottie-react";
 import { Home, SquarePen, PiggyBank, Hourglass, Medal } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import home from "@/lottie/Home.json";
 import hour from "@/lottie/Hourglass.json";
 import medal from "@/lottie/Medal.json";
@@ -83,7 +83,7 @@ export default function LottieCardFlow() {
   }, []);
 
   return (
-    <section className="w-full min-h-screen md:h-screen flex flex-col items-center justify-center bg-gradient-to-b from-green-900 to-[#072566] py-16 md:py-0">
+    <section className="w-full min-h-screen md:h-screen flex flex-col items-center justify-center bg-linear-to-b from-green-900 to-[#072566] py-16 md:py-0">
       <div className="relative w-full max-w-7xl px-6 md:px-0 md:pt-0">
         
         <h1 className="text-white mb-4 md:mb-6 text-3xl md:text-5xl tracking-tighter font-semibold">
@@ -97,14 +97,14 @@ export default function LottieCardFlow() {
         </p>
 
         {/* Línea horizontal — solo desktop */}
-        <div className="hidden md:block absolute top-1/2 left-0 w-full h-[1px] bg-gray-300 z-0" />
+        <div className="hidden md:block absolute top-1/2 left-0 w-full h-px bg-gray-300 z-0" />
 
         {/* Contenedor de cards */}
         <div className={`
           relative z-10
           ${isMobile 
             ? "flex flex-col gap-5" 
-            : "flex gap-4 h-[500px]"}
+            : "flex gap-4 h-125"}
         `}>
           {preColoredCards.map((card, i) => {
             const isHovered = !isMobile && hovered === i;
@@ -141,11 +141,11 @@ export default function LottieCardFlow() {
                 {/* LOTTIE */}
                 <div className={`
                   flex justify-center items-center
-                  ${isMobile ? "h-[140px] mb-2" : "h-[60%]"}
+                  ${isMobile ? "h-35 mb-2" : "h-[60%]"}
                 `}>
                   <div className={`
                     flex items-center justify-center
-                    ${isMobile ? "w-[130px] h-[130px]" : "w-[180px] h-[180px] md:w-[240px] md:h-[240px]"}
+                    ${isMobile ? "w-32.5 h-32.5" : "w-45 h-45 md:w-60 md:h-60"}
                   `}>
                     {/* En mobile siempre mostramos el Lottie */}
                     {(isMobile || isHovered) && (
@@ -192,7 +192,7 @@ export default function LottieCardFlow() {
                       transition={{ duration: 0.35 }}
                       className={`
                         text-white font-medium
-                        ${isMobile ? "text-sm leading-relaxed mt-1 px-1" : "text-lg font-semibold mb-10 max-w-[400px]"}
+                        ${isMobile ? "text-sm leading-relaxed mt-1 px-1" : "text-lg font-semibold mb-10 max-w-100"}
                       `}
                     >
                       {card.description}
@@ -202,7 +202,7 @@ export default function LottieCardFlow() {
 
                 {/* DOT — solo desktop */}
                 {!isMobile && (
-                  <div className="absolute bottom-[-28px] left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-blue-950" />
+                  <div className="absolute -bottom-7 left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-blue-950" />
                 )}
               </motion.div>
             );

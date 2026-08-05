@@ -12,6 +12,7 @@ export default function Hey() {
         {/* card candidates */}
         <Card
           image="/img/ramdom/vin24.jpeg"
+          mobileImage="/img/ramdom/fro21.jpeg"
           alt="Exteriores"
           title="Exteriores"
           description="Creamos soluciones publicitarias de alto impacto para exteriores: letreros luminosos, paneles, brandeo vehicular, banderolas, viniles y estructuras visuales diseñadas para maximizar la visibilidad de tu marca en cualquier entorno."
@@ -22,6 +23,7 @@ export default function Hey() {
         {/* card companiies */}
         <Card
           image="/img/ramdom/fro21.jpeg"
+          mobileImage="/img/ramdom/vin24.jpeg"
           alt="Interiores"
           title="Interiores"
           description="Desarrollamos espacios visuales modernos para interiores, integrando branding corporativo, acrílicos, letras corpóreas, decoración comercial y acabados personalizados que fortalecen la identidad de tu negocio."
@@ -38,6 +40,7 @@ interface CardProps {
   title: string
   description: string
   image: string
+  mobileImage?: string
   alt: string
   bgColor: string
   logoSrc: string
@@ -49,7 +52,7 @@ const MotionImage = motion(Image)
 
 
 const Card = forwardRef<HTMLDivElement, CardProps>(
-  ({ title, description, image, alt, bgColor, logoSrc }, ref) => (
+  ({ title, description, image, alt, bgColor, mobileImage, logoSrc }, ref) => (
     <motion.div
       className={`${bgColor} overflow-hidden rounded-2xl text-white`}
       initial={"initial"}
@@ -61,9 +64,9 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
         hovered: { flexBasis: "150%" },
       }}
     >
-      <div className="relative h-[280px] overflow-hidden md:h-[600px]">
+      <div className="relative h-70 overflow-hidden md:h-150">
         <MotionImage
-          src={image}
+          src={mobileImage || image}
           fill
           sizes="100vw"
           alt={alt}

@@ -124,8 +124,8 @@ export default function Hogar() {
   };
 
   return (
-    <section id="hogar" className="w-full min-h-screen flex items-center justify-center md:py-40 py-20 bg-gradient-to-b from-blue-700 to-green-900 relative overflow-hidden">
-      <div className="max-w-[1800px] mx-auto relative w-full">
+    <section id="hogar" className="w-full min-h-screen flex items-center justify-center md:py-40 py-20 bg-linear-to-b from-blue-700 to-green-900 relative overflow-hidden">
+      <div className="max-w-450 mx-auto relative w-full">
 
         {/* Título */}
         <div className="text-start md:px-30 px-6"> 
@@ -139,7 +139,7 @@ export default function Hogar() {
 
         {/* Carrusel */}
         <motion.div
-          className="relative w-full md:h-[620px] h-[400px] flex items-center justify-center perspective-[2000px]"
+          className="relative w-full md:h-155 h-100 flex items-center justify-center perspective-[2000px]"
           drag="x"
           dragConstraints={{ left: 0, right: 0 }}
           onDragStart={() => setIsDragging(true)}
@@ -166,7 +166,7 @@ export default function Hogar() {
                   }}
                   exit={{ x: direction > 0 ? -800 : 800, opacity: 0, scale: 0.7 }}
                   transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-                  className="absolute w-[360px] md:w-[620px] aspect-[16/10.5] rounded-3xl overflow-hidden border border-white/10 bg-white cursor-grab active:cursor-grabbing"
+                  className="absolute w-90 md:w-155 aspect-[16/10.5] rounded-3xl overflow-hidden border border-white/10 bg-white cursor-grab active:cursor-grabbing"
                   style={{
                     transformStyle: "preserve-3d",
                     filter: "drop-shadow(0 40px 60px rgba(0,0,0,0.6))",
@@ -180,7 +180,7 @@ export default function Hogar() {
                       className="object-cover md:opacity-100 opacity-70 pointer-events-none"
                     />
 
-                    <div className="absolute bottom-0 left-0 right-0 h-2/5 bg-gradient-to-t from-black/90 via-black/60 to-transparent" />
+                    <div className="absolute bottom-0 left-0 right-0 h-2/5 bg-linear-to-t from-black/90 via-black/60 to-transparent" />
 
                     <div className="absolute bottom-0 left-0 right-0 p-8 text-white z-10">
                       <div className="flex items-end justify-between">

@@ -7,12 +7,12 @@ import CtaButton from "../../components/ui/cta-button";
 
 export default function Hero() {
   return (
-    <section id="inicio" className="relative overflow-hidden py-20 pt-20 bg-blue-900 text-white">
-      <div className="absolute inset-0 bg-gradient-to-b from-blue-450/80 via-transparent to-green-800" />
+    <section id="inicio" className="relative overflow-hidden md:pt-32 pt-20 bg-blue-900 text-white">
+      <div className="absolute inset-0 bg-linear-to-b from-blue-450/80 via-transparent to-green-800" />
       <div className="relative mx-auto max-w-7xl px-6 md:mt-14 py-14 md:pb-40">
-        <div className="grid grid-cols-1 gap-16 lg:grid-cols-2 lg:items-center">
+        <div className="grid grid-cols-1 gap-30 lg:grid-cols-2 lg:items-center">
           <div className="relative">
-            <div className="relative aspect-[5/5] overflow-hidden rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl">
+            <div className="relative aspect-5/5 overflow-hidden rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl">
               <Image src="/img/logo/boske.png" alt="Publicidad exterior" width={800} height={800} className="h-full w-full object-cover brightness-110" />
               <div className="absolute inset-0 z-10 flex items-center justify-center">
                 <motion.div

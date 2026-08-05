@@ -59,16 +59,10 @@ export default function Navbar() {
     },
   };
 
-  // const onPageChange = () => {
-  //   setTimeout(() => {
-  //     setMenuOpen(false);
-  //   }, 200);
-  // };
-
   return (
     <>
       <motion.div variants={variants} animate={hidden ? "hidden" : "visible"} initial="visible" onAnimationComplete={() => setIsFirstRender(false)} className="fixed top-0 left-0 z-50 hidden w-full items-center border-b border-gray-800 bg-black/20 py-3 backdrop-blur-xl md:flex">
-        <div className="mx-6 flex w-full max-w-[1920px] gap-36 items-center justify-between">
+        <div className="mx-6 flex w-full max-w-480 gap-4 items-center justify-between">
           <div className="flex">
             <Image src="/img/fggo.png" alt="Logo black" width={110} height={28} className="object-contain" />
           </div>
@@ -115,7 +109,7 @@ export default function Navbar() {
       {/* Mobile Menu */}
       <AnimatePresence>
         {isMenuOpen && (
-          <motion.div key="menu" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-[100] bg-green-900/70 backdrop-blur-xl px-6 ml-4 md:hidden">
+          <motion.div key="menu" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-100 bg-green-900/70 backdrop-blur-xl px-6 ml-4 md:hidden">
             {/* Botón cerrar */}
             <Button size="icon" variant="ghost" onClick={() => setMenuOpen(false)} className="absolute right-6 top-6 h-12 w-12 rounded-full border border-white/10 bg-white/5 backdrop-blur-xl hover:border-green-500 hover:bg-green-500/10">
               <X className="h-6 w-6 text-white" />
@@ -133,28 +127,6 @@ export default function Navbar() {
     </>
   );
 }
-
-// interface MenuItemProps {
-//   href: string;
-//   label: string;
-//   isActive: boolean;
-//   delay: number;
-//   onClick?: () => void;
-//   className?: string;
-// }
-
-// function MenuItem({ href, label, isActive, delay, onClick, className }: MenuItemProps) {
-//   return (
-//     <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay, duration: 0.3 }}>
-//       <Link href={href} className="relative block" onClick={onClick}>
-//         {isActive && <Leaf className="absolute top-1/2 -left-6 size-5 -translate-y-1/2 text-[#FF5F2A]" />}
-//         <Button variant="link" className={`font-space-grotesk px-0 text-3xl font-bold text-white ${className}`}>
-//           {label}
-//         </Button>
-//       </Link>
-//     </motion.div>
-//   );
-// }
 
 interface NavItemProps {
   children: React.ReactNode;
@@ -212,7 +184,7 @@ function Cursor({
         stiffness: 350,
         damping: 30,
       }}
-      className="absolute top-1/2 z-0 h-[54px] -translate-y-1/2 rounded-full bg-green-600"
+      className="absolute top-1/2 z-0 h-13.5 -translate-y-1/2 rounded-full bg-green-600"
     />
   );
 }

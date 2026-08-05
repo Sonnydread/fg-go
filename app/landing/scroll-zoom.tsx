@@ -66,7 +66,7 @@ function AnimatedImage({
       }}
     >
       <motion.div style={{ scale, opacity }}>
-        <div className="w-[220px] md:w-[300px] lg:w-[380px]">
+        <div className="w-55 md:w-75 lg:w-95">
           <Image
             src={src}
             alt="visual"
@@ -94,7 +94,7 @@ export default function ScrollZoomGallery() {
   const textY = useTransform(scrollYProgress, [0.8, 1], [100, 0]);
 
   return (
-    <section ref={containerRef} className="h-[400vh] relative bg-gradient-to-b from-green-800 to-[#01274f]">
+    <section ref={containerRef} className="h-[400vh] relative bg-linear-to-b from-green-800 to-[#01274f]">
       <div className="sticky top-0 h-screen overflow-hidden">
 
         {/* 🎬 IMÁGENES */}
@@ -116,7 +116,7 @@ export default function ScrollZoomGallery() {
             scale: textScale,
             y: textY,
           }}
-          className="absolute inset-0 flex flex-col items-center justify-center z-[200]"
+          className="absolute inset-0 flex flex-col items-center justify-center z-200"
         >
           <Image
             src="/img/logo/log-reveal.png"
@@ -126,7 +126,7 @@ export default function ScrollZoomGallery() {
             className="mb-6"
           />
 
-          <h2 className="text-white text-3xl md:text-5xl lg:text-6xl font-bold text-center px-6 max-w-[900px]">
+          <h2 className="text-white text-3xl md:text-5xl lg:text-6xl font-bold text-center px-6 max-w-225">
             Transformamos tu marca con impacto visual
           </h2>
         </motion.div>

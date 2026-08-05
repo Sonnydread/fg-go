@@ -89,7 +89,7 @@ export default function Footer() {
         <div className="border-t border-white/20 my-10" />
 
         {/* Copyright */}
-        <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-base text-white/70">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-base text-white">
           <p className="md:block hidden text-center md:text-left">© {new Date().getFullYear()} FGGO Publicidad. Todos los derechos reservados.</p>
           <p className="md:hidden text-center md:text-left">
             © {new Date().getFullYear()} FGGO Publicidad. <br /> Todos los derechos reservados.
@@ -97,13 +97,13 @@ export default function Footer() {
 
           <p className="md:block hidden text-center md:text-right font-semibold tracking-wide text-white">
             Desarrollado por:{" "}
-            <a href="https://digital-strategy-kappa.vercel.app/" target="_blank" rel="noopener noreferrer" className="ml-1 transition-all duration-300 text-red-500 md:text-green-500 hover:text-blue-400 hover:scale-105 inline-block">
+            <a href="https://www.impactodigitalestrategico.com/" target="_blank" rel="noopener noreferrer" className="ml-1 transition-all duration-300 text-red-500 md:text-green-500 hover:text-blue-400 text-xl hover:scale-105 inline-block">
               Impacto Digital Estratégico
             </a>
           </p>
           <p className="md:hidden text-center md:text-right pb-10 font-semibold tracking-wide text-white">
             Desarrollado por: <br />
-            <a href="https://digital-strategy-kappa.vercel.app/" target="_blank" rel="noopener noreferrer" className="ml-1 transition-all text-xl font-black duration-300 text-red-500 md:text-green-500 hover:text-blue-400 hover:scale-105 inline-block">
+            <a href="https://www.impactodigitalestrategico.com/" target="_blank" rel="noopener noreferrer" className="ml-1 transition-all text-xl font-black duration-300 text-red-500 md:text-green-500 hover:text-blue-400 hover:scale-105 inline-block">
               Impacto Digital Estratégico
             </a>
           </p>

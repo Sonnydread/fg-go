@@ -82,7 +82,7 @@ export default function XxAboutUs() {
   return (
     <section
       id="nosotros"
-      className="md:pt-30 pb-10 bg-gradient-to-b from-[#01274f] to-green-700 overflow-hidden"
+      className="md:pt-30 pb-10 bg-linear-to-b from-[#01274f] to-green-700 overflow-hidden"
     >
       <div className="md:mx-auto mx-6 max-w-7xl">
         <div ref={ref} className="grid lg:grid-cols-2 gap-8 md:gap-20">
@@ -155,7 +155,7 @@ export default function XxAboutUs() {
     relative w-full
     ${isMobile
       ? "flex flex-col items-center gap-6 py-4"
-      : "h-[780px] flex items-center justify-center"}
+      : "h-195 flex items-center justify-center"}
     mt-6 md:mt-0
   `}
 >
@@ -173,10 +173,10 @@ export default function XxAboutUs() {
         : {}
     }
     transition={{ duration: 1.2 }}
-    className={isMobile ? "relative z-10 w-full max-w-[340px]" : "absolute z-20"}
+    className={isMobile ? "relative z-10 w-full max-w-85" : "absolute z-20"}
   >
     <motion.div
-      className={isMobile ? "w-full" : "h-[420px]"}
+      className={isMobile ? "w-full" : "h-105"}
       style={{ rotateX: rotateXLeft, rotateY: rotateYLeft }}
     >
       <Image
@@ -188,7 +188,7 @@ export default function XxAboutUs() {
           object-cover shadow-xl
           ${isMobile
             ? "w-full h-auto rounded-2xl"
-            : "w-[420px] h-full rounded-3xl"}
+            : "w-105 h-full rounded-3xl"}
         `}
       />
     </motion.div>
@@ -208,7 +208,7 @@ export default function XxAboutUs() {
         : {}
     }
     transition={{ duration: 1.1, delay: 0.2 }}
-    className={isMobile ? "relative z-10 w-full max-w-[300px]" : "absolute"}
+    className={isMobile ? "relative z-10 w-full max-w-75" : "absolute"}
   >
     <motion.div style={{ rotateX: rotateXCenter, rotateY: rotateYCenter }}>
       <Image
@@ -220,7 +220,7 @@ export default function XxAboutUs() {
           object-cover shadow-xl md:block hidden
           ${isMobile
             ? "w-full h-auto rounded-2xl"
-            : "w-[330px] h-auto rounded-2xl"}
+            : "w-82.5 h-auto rounded-2xl"}
         `}
       />
     </motion.div>
@@ -240,7 +240,7 @@ export default function XxAboutUs() {
         : {}
     }
     transition={{ duration: 1.2, delay: 0.3 }}
-    className={isMobile ? "relative z-10 w-full max-w-[360px]" : "absolute z-40"}
+    className={isMobile ? "relative z-10 w-full max-w-90" : "absolute z-40"}
   >
     <motion.div style={{ rotateX: rotateXRight, rotateY: rotateYRight }}>
       <video
@@ -252,8 +252,8 @@ export default function XxAboutUs() {
         className={`
           object-cover shadow-xl
           ${isMobile
-            ? "w-full h-[200px] rounded-2xl"
-            : "w-[840px] h-[350px] rounded-2xl"}
+            ? "w-full h-50 rounded-2xl"
+            : "w-210 h-87.5 rounded-2xl"}
         `}
       />
     </motion.div>
@@ -275,7 +275,7 @@ export default function XxAboutUs() {
                 Letreros luminosos · Brandeo Vehicular · Banderolas · Viniles Adhesivos · Bastidores · Letras Block · Stickers · Acrílicos ·
               </div>
             </ScrollVelocityRow>
-             <ScrollVelocityRow baseVelocity={-4}>
+             <ScrollVelocityRow baseVelocity={4}>
               <div className="md:hidden flex gap-10 md:gap-16 mx-auto text-xl md:text-6xl font-bold pl-2 pb-4 text-[#09b358] whitespace-nowrap">
                 Stickers · Viniles Adhesivos · Banderolas · Brandeo Vehicular Letras Block · Bastidores · Letreros Luminosos · Acrílicos ·
               </div>

@@ -4,78 +4,63 @@ import React from "react";
 import { motion } from "framer-motion";
 import CtaButton from "../../components/ui/cta-button";
 
-import {
-  Accordion,
-  AccordionItem,
-  AccordionTrigger,
-  AccordionContent,
-} from "../../components/ui/accordion";
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "../../components/ui/accordion";
 
 export default function Faqs() {
   const faqs = [
     {
       question: "¿Qué servicios de publicidad ofrecen?",
-      answer:
-        "Brindamos servicios integrales de publicidad e impresión, incluyendo viniles publicitarios, stickers, gigantografías, material POP, impresiones digitales, rotulación comercial y piezas promocionales personalizadas para empresas y particulares.",
+      answer: "Brindamos servicios integrales de publicidad e impresión, incluyendo viniles publicitarios, stickers, gigantografías, material POP, impresiones digitales, rotulación comercial y piezas promocionales personalizadas para empresas y particulares.",
     },
     {
       question: "¿Atienden a empresas y a clientes particulares?",
-      answer:
-        "Sí, trabajamos tanto con empresas, marcas y negocios como con clientes particulares. Nos adaptamos a cada necesidad, ya sea para campañas publicitarias, eventos, emprendimientos o proyectos personales.",
+      answer: "Sí, trabajamos tanto con empresas, marcas y negocios como con clientes particulares. Nos adaptamos a cada necesidad, ya sea para campañas publicitarias, eventos, emprendimientos o proyectos personales.",
     },
     {
       question: "¿Pueden personalizar los diseños y materiales?",
-      answer:
-        "Por supuesto. Todos nuestros productos pueden personalizarse en tamaño, colores, acabados y diseño. También ofrecemos asesoría gráfica para garantizar un resultado visual atractivo y profesional.",
+      answer: "Por supuesto. Todos nuestros productos pueden personalizarse en tamaño, colores, acabados y diseño. También ofrecemos asesoría gráfica para garantizar un resultado visual atractivo y profesional.",
     },
     {
       question: "¿Cuáles son los tiempos de entrega?",
-      answer:
-        "Los tiempos varían según el tipo de material y la cantidad solicitada. En general, los pedidos estándar se entregan entre 2 y 5 días hábiles. Para trabajos urgentes, contamos con opciones de entrega rápida.",
+      answer: "Los tiempos varían según el tipo de material y la cantidad solicitada. En general, los pedidos estándar se entregan entre 2 y 5 días hábiles. Para trabajos urgentes, contamos con opciones de entrega rápida.",
     },
     {
       question: "¿Qué métodos de pago aceptan?",
-      answer:
-        "Aceptamos transferencias bancarias, Yape, Plin y pagos en efectivo. Para pedidos empresariales o grandes volúmenes, también ofrecemos opciones de pago coordinadas previamente.",
+      answer: "Aceptamos transferencias bancarias, Yape, Plin y pagos en efectivo. Para pedidos empresariales o grandes volúmenes, también ofrecemos opciones de pago coordinadas previamente.",
     },
     {
       question: "¿Realizan envíos o instalaciones?",
-      answer:
-        "Sí, realizamos envíos y, en el caso de viniles y rotulación, ofrecemos servicio de instalación para asegurar un acabado profesional y duradero.",
+      answer: "Sí, realizamos envíos y, en el caso de viniles y rotulación, ofrecemos servicio de instalación para asegurar un acabado profesional y duradero.",
     },
   ];
 
   return (
-    <section id="faqs" className="relative py-32 text-white overflow-hidden
-      bg-gradient-to-b from-[#072566] to-[#032c16]">
-
+    <section
+      id="faqs"
+      className="relative py-32 text-white overflow-hidden
+      bg-linear-to-b from-[#072566] to-[#032c16]"
+    >
       {/* Luces de fondo */}
-      <div className="absolute inset-0 
+      <div
+        className="absolute inset-0 
         bg-[radial-gradient(circle_at_25%_40%,rgba(56,189,248,0.18),transparent_30%)] 
-        pointer-events-none" />
+        pointer-events-none"
+      />
 
-      <div className="absolute inset-0 
+      <div
+        className="absolute inset-0 
         bg-[radial-gradient(circle_at_75%_60%,rgba(16,185,129,0.15),transparent_30%)] 
-        pointer-events-none" />
+        pointer-events-none"
+      />
 
       {/* Header */}
       <div className="relative max-w-6xl mx-auto text-center md:px-0 px-6 md:mb-16 mb-10">
-        <motion.h2
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="md:text-5xl text-3xl text-start font-semibold tracking-tighter text-white pb-4">
+        <motion.h2 initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="md:text-5xl text-3xl text-start font-semibold tracking-tighter text-white pb-4">
           Preguntas Frecuentes
         </motion.h2>
 
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ delay: 0.3, duration: 0.8 }}
-          className="text-white/80 md:text-start text-base text-justify font-semibold tracking-tighter md:text-2xl mx-auto"
-        >
-          Resuelve tus dudas y conoce cómo podemos ayudarte con soluciones
-          publicitarias profesionales y personalizadas.
+        <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: 0.3, duration: 0.8 }} className="text-white/80 md:text-start text-base text-justify font-semibold tracking-tighter md:text-2xl mx-auto">
+          Resuelve tus dudas y conoce cómo podemos ayudarte con soluciones publicitarias profesionales y personalizadas.
         </motion.p>
       </div>
 
@@ -83,18 +68,13 @@ export default function Faqs() {
       <div className="relative max-w-6xl md:mx-auto mx-6">
         <Accordion type="single" collapsible className="space-y-5">
           {faqs.map((faq, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.08 }}
-            >
+            <motion.div key={index} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: index * 0.08 }}>
               <AccordionItem
                 value={`item-${index}`}
                 className="
                   rounded-2xl
                   border border-white/20
-                  bg-white/[0.08]
+                  bg-white/8
                   backdrop-blur-xl
                   shadow-[0_20px_60px_rgba(0,0,0,0.45)]
                   hover:border-green-500
@@ -110,9 +90,7 @@ export default function Faqs() {
                   {faq.question}
                 </AccordionTrigger>
 
-                <AccordionContent className="px-6 pb-5 text-white/80 md:text-xl text-base tracking-tighter font-semibold leading-relaxed">
-                  {faq.answer}
-                </AccordionContent>
+                <AccordionContent className="px-6 pb-5 text-white/80 md:text-xl text-base tracking-tighter font-semibold leading-relaxed">{faq.answer}</AccordionContent>
               </AccordionItem>
             </motion.div>
           ))}
@@ -121,20 +99,14 @@ export default function Faqs() {
 
       {/* CTA */}
       <div className="relative z-10 flex justify-center mt-16">
-       <a 
-  href="https://wa.me/51982748220?text=Hola!%20Quisiera%20más%20información%20sobre%20los%20servicios%20de%20FGGO!" 
-  target="_blank" 
-  rel="noopener noreferrer"
-  className="inline-block"
->
-  <div className="relative group">
-    {/* Glow suave difuso */}
-    <div className="absolute -inset-8 mt-8 rounded-full bg-emerald-500 opacity-40 blur-[30px] group-hover:opacity-90 transition-opacity" />
+        <a href="https://wa.me/51982748220?text=Hola!%20Quisiera%20más%20información%20sobre%20los%20servicios%20de%20FGGO!" target="_blank" rel="noopener noreferrer" className="inline-block">
+          <div className="relative group">
+            {/* Glow suave difuso */}
+            <div className="absolute -inset-8 mt-8 rounded-full bg-emerald-500 opacity-40 blur-[30px] group-hover:opacity-90 transition-opacity" />
 
-    <CtaButton />
-  </div>
-</a>
-
+            <CtaButton />
+          </div>
+        </a>
       </div>
     </section>
   );

@@ -18,7 +18,7 @@ export default function ModalHogar({ isOpen, onClose, project }: Props) {
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          className="fixed inset-0 z-[99999]"
+          className="fixed inset-0 z-99999"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -63,7 +63,7 @@ export default function ModalHogar({ isOpen, onClose, project }: Props) {
               <div className="grid md:grid-cols-2 flex-1 min-h-0 overflow-y-auto">
                 
                 {/* Columna izquierda - Imagen principal */}
-                <div className="relative h-[260px] sm:h-[320px] md:h-auto md:min-h-[600px] bg-black shrink-0">
+                <div className="relative h-65 sm:h-80 md:h-auto md:min-h-150 bg-black shrink-0">
                   <Image
                     src={project.gallery?.[0] || project.image}
                     alt={project.title}
@@ -75,9 +75,9 @@ export default function ModalHogar({ isOpen, onClose, project }: Props) {
 
                 {/* Columna derecha - Galería más compacta */}
                 <div className="flex flex-col overflow-hidden">
-                  <div className="grid grid-rows-2 flex-1 min-h-[360px] md:min-h-0">
+                  <div className="grid grid-rows-2 flex-1 min-h-90 md:min-h-0">
                     {/* Imagen superior */}
-                    <div className="relative overflow-hidden min-h-[180px] md:min-h-0">
+                    <div className="relative overflow-hidden min-h-45 md:min-h-0">
                       <Image
                         src={project.gallery?.[1] || project.image}
                         alt={`${project.title} - vista 1`}
@@ -87,7 +87,7 @@ export default function ModalHogar({ isOpen, onClose, project }: Props) {
                     </div>
 
                     {/* Imagen inferior */}
-                    <div className="relative overflow-hidden min-h-[180px] md:min-h-0">
+                    <div className="relative overflow-hidden min-h-45 md:min-h-0">
                       <Image
                         src={project.gallery?.[2] || project.image}
                         alt={`${project.title} - vista 2`}

@@ -58,9 +58,7 @@ export default function ContactModal({ open, onClose }: Props) {
       }
 
       if (e.key === "Tab") {
-        const focusable = modalRef.current?.querySelectorAll<
-          HTMLInputElement | HTMLTextAreaElement | HTMLButtonElement
-        >("input, textarea, button");
+        const focusable = modalRef.current?.querySelectorAll<HTMLInputElement | HTMLTextAreaElement | HTMLButtonElement>("input, textarea, button");
 
         if (!focusable || focusable.length === 0) return;
 
@@ -112,8 +110,7 @@ export default function ContactModal({ open, onClose }: Props) {
       case "name":
         if (!trimmed) return "El nombre es obligatorio";
         if (trimmed.length < 2) return "El nombre debe tener al menos 2 caracteres";
-        if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]+$/.test(trimmed))
-          return "Solo se permiten letras y espacios";
+        if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]+$/.test(trimmed)) return "Solo se permiten letras y espacios";
         break;
 
       case "celular":
@@ -142,9 +139,7 @@ export default function ContactModal({ open, onClose }: Props) {
 
   // Calcula si el formulario está completamente válido
   const isFormValid = useMemo(() => {
-    return (Object.keys(form) as (keyof FormData)[]).every(
-      (key) => !validateField(key, form[key])
-    );
+    return (Object.keys(form) as (keyof FormData)[]).every((key) => !validateField(key, form[key]));
   }, [form]);
 
   const validateForm = (): boolean => {
@@ -160,9 +155,7 @@ export default function ContactModal({ open, onClose }: Props) {
   };
 
   // ─── HANDLERS ───────────────────────────────────────────────────
-  const handleChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
 
@@ -225,129 +218,50 @@ export default function ContactModal({ open, onClose }: Props) {
 
   const inputClass = (field: keyof FormErrors) =>
     `w-full p-3 rounded-lg bg-gray-300 placeholder:text-gray-600 outline-none transition
-     focus:ring-2 ${
-       errors[field]
-         ? "ring-2 ring-red-500 focus:ring-red-500"
-         : "focus:ring-[#009846]"
-     }`;
+     focus:ring-2 ${errors[field] ? "ring-2 ring-red-500 focus:ring-red-500" : "focus:ring-[#009846]"}`;
 
   return createPortal(
     <AnimatePresence>
       {open && (
         <>
           {/* BACKDROP */}
-          <motion.div
-            className="fixed inset-0 bg-black/50 z-[9998]"
-            initial={{ backdropFilter: "blur(0px)", opacity: 0 }}
-            animate={{ backdropFilter: "blur(8px)", opacity: 1 }}
-            exit={{ backdropFilter: "blur(0px)", opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            onClick={onClose}
-          />
+          <motion.div className="fixed inset-0 bg-black/50 z-9998" initial={{ backdropFilter: "blur(0px)", opacity: 0 }} animate={{ backdropFilter: "blur(8px)", opacity: 1 }} exit={{ backdropFilter: "blur(0px)", opacity: 0 }} transition={{ duration: 0.3 }} onClick={onClose} />
 
           {/* MODAL */}
-          <motion.div
-            className="fixed inset-0 z-[9999] flex items-center justify-center px-4"
-            initial={{ opacity: 0, scale: 0.9, y: 40 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.9, y: 40 }}
-            transition={{ duration: 0.25 }}
-          >
-            <div
-              ref={modalRef}
-              onClick={(e) => e.stopPropagation()}
-              className="w-full max-w-lg bg-gray-200 text-black rounded-2xl p-6 md:p-8 shadow-2xl relative"
-            >
+          <motion.div className="fixed inset-0 z-9999 flex items-center justify-center px-4" initial={{ opacity: 0, scale: 0.9, y: 40 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.9, y: 40 }} transition={{ duration: 0.25 }}>
+            <div ref={modalRef} onClick={(e) => e.stopPropagation()} className="w-full max-w-lg bg-gray-200 text-black rounded-2xl p-6 md:p-8 shadow-2xl relative">
               {/* cerrar */}
-              <button
-                onClick={onClose}
-                className="absolute right-4 top-4 text-gray-400 cursor-pointer hover:text-[#2474c3] p-2 rounded-full hover:bg-white/10"
-                aria-label="Cerrar"
-              >
+              <button onClick={onClose} className="absolute right-4 top-4 text-gray-400 cursor-pointer hover:text-[#2474c3] p-2 rounded-full hover:bg-white/10" aria-label="Cerrar">
                 <X size={22} />
               </button>
 
-              <h2 className="text-2xl md:text-3xl font-bold mb-4 pr-8">
-                Contáctanos
-              </h2>
+              <h2 className="text-2xl md:text-3xl font-bold mb-4 pr-8">Contáctanos</h2>
 
-              <p className="text-black mb-6 md:text-lg text-sm font-semibold">
-                Envíanos un mensaje para resolver tus dudas.
-              </p>
+              <p className="text-black mb-6 md:text-lg text-sm font-semibold">Envíanos un mensaje para resolver tus dudas.</p>
 
               <div className="space-y-4">
                 {/* Nombre */}
                 <div>
-                  <input
-                    name="name"
-                    placeholder="Tu nombre"
-                    value={form.name}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    className={inputClass("name")}
-                    autoComplete="name"
-                  />
-                  {errors.name && (
-                    <p className="mt-1.5 text-sm text-red-600 font-medium">
-                      {errors.name}
-                    </p>
-                  )}
+                  <input name="name" placeholder="Tu nombre" value={form.name} onChange={handleChange} onBlur={handleBlur} className={inputClass("name")} autoComplete="name" />
+                  {errors.name && <p className="mt-1.5 text-sm text-red-600 font-medium">{errors.name}</p>}
                 </div>
 
                 {/* Celular */}
                 <div>
-                  <input
-                    name="celular"
-                    placeholder="+51 999 999 999"
-                    value={form.celular}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    className={inputClass("celular")}
-                    autoComplete="tel"
-                    inputMode="tel"
-                  />
-                  {errors.celular && (
-                    <p className="mt-1.5 text-sm text-red-600 font-medium">
-                      {errors.celular}
-                    </p>
-                  )}
+                  <input name="celular" placeholder="+51 999 999 999" value={form.celular} onChange={handleChange} onBlur={handleBlur} className={inputClass("celular")} autoComplete="tel" inputMode="tel" />
+                  {errors.celular && <p className="mt-1.5 text-sm text-red-600 font-medium">{errors.celular}</p>}
                 </div>
 
                 {/* Email */}
                 <div>
-                  <input
-                    name="email"
-                    type="email"
-                    placeholder="Tu correo"
-                    value={form.email}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    className={inputClass("email")}
-                    autoComplete="email"
-                  />
-                  {errors.email && (
-                    <p className="mt-1.5 text-sm text-red-600 font-medium">
-                      {errors.email}
-                    </p>
-                  )}
+                  <input name="email" type="email" placeholder="Tu correo" value={form.email} onChange={handleChange} onBlur={handleBlur} className={inputClass("email")} autoComplete="email" />
+                  {errors.email && <p className="mt-1.5 text-sm text-red-600 font-medium">{errors.email}</p>}
                 </div>
 
                 {/* Mensaje */}
                 <div>
-                  <textarea
-                    name="message"
-                    rows={4}
-                    placeholder="Escribe tu mensaje..."
-                    value={form.message}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    className={inputClass("message")}
-                  />
-                  {errors.message && (
-                    <p className="mt-1.5 text-sm text-red-600 font-medium">
-                      {errors.message}
-                    </p>
-                  )}
+                  <textarea name="message" rows={4} placeholder="Escribe tu mensaje..." value={form.message} onChange={handleChange} onBlur={handleBlur} className={inputClass("message")} />
+                  {errors.message && <p className="mt-1.5 text-sm text-red-600 font-medium">{errors.message}</p>}
                 </div>
 
                 {/* BOTÓN */}
@@ -356,11 +270,7 @@ export default function ContactModal({ open, onClose }: Props) {
                   disabled={loading || !isFormValid}
                   className={`
                     w-full py-5 rounded-lg font-semibold transition
-                    ${
-                      loading || !isFormValid
-                        ? "bg-gray-400 text-gray-200 opacity-70 cursor-not-allowed"
-                        : "bg-[#009846] hover:bg-[#009846]/80 text-white cursor-pointer"
-                    }
+                    ${loading || !isFormValid ? "bg-gray-400 text-gray-200 opacity-70 cursor-not-allowed" : "bg-[#009846] hover:bg-[#009846]/80 text-white cursor-pointer"}
                   `}
                 >
                   {loading ? "Enviando..." : "Enviar al correo"}
@@ -371,6 +281,6 @@ export default function ContactModal({ open, onClose }: Props) {
         </>
       )}
     </AnimatePresence>,
-    document.body
+    document.body,
   );
 }

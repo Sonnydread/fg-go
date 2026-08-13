@@ -13,14 +13,14 @@ const images = [
   "/img/splinter/splinter6.jpeg",
   "/img/splinter/splinter7.jpeg",
   "/img/splinter/splinter8.jpeg",
-  "/img/splinter/splinter3.jpeg",
-  "/img/splinter/splinter1.jpeg",
+  "/img/brandeo/brandeo15.jpeg",
+  "/img/brandeo/brandeo13.jpeg",
   "/img/splinter/splinter9.jpeg",
-  "/img/splinter/splinter4.jpeg",
+  "/img/brandeo/brandeo12.png",
   "/img/splinter/splinter10.jpeg",
   "/img/splinter/splinter11.jpeg",
   "/img/splinter/splinter12.jpeg",
-  "/img/splinter/splinter2.jpeg",
+  "/img/brandeo/brandeo5.jpg",
 ];
 export function SecondCarousel() {
   return (

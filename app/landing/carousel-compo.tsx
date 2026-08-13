@@ -35,7 +35,7 @@ const projects: Project[] = [
   },
   {
     id: 2,
-    title: "Brandeo Vehicular",
+    title: "Brandeo Vehicular Corporativo",
     subtitle: "Tu marca en movimiento",
     image: "/img/corporativos/brad-vehi.jpeg",
     gallery: ["/img/corporativos/carrovin2.png", "/img/corporativos/carrovi1.png", "/img/corporativos/carrovin3.png", "/img/corporativos/carrovin4.jpeg"],
@@ -44,7 +44,7 @@ const projects: Project[] = [
   },
   {
     id: 3,
-    title: "Banderolas",
+    title: "Plumas Publicitarias",
     subtitle: "Publicidad visible en exteriores",
     image: "/img/corporativos/banderola.png",
     gallery: ["/img/corporativos/banderol4.jpg", "/img/corporativos/banderol1.jpg", "/img/corporativos/banderol3.png", "/img/corporativos/banderol2.jpg"],
@@ -61,7 +61,16 @@ const projects: Project[] = [
   { id: 5, title: "Bastidores", subtitle: "Estructuras resistentes para publicidad", image: "/img/corporativos/raspa.png", gallery: ["/img/corporativos/bast3.jpeg", "/img/corporativos/bast2.jpeg", "/img/corporativos/bast4.jpeg", "/img/corporativos/bast5.jpeg"], description: "Descripción del proyecto..." },
   { id: 6, title: "Letras block", subtitle: "Volúmen y presencia corporativa", image: "/img/corporativos/le-block.jpg", gallery: ["/img/corporativos/letra1.jpeg", "/img/corporativos/letra2.jpeg", "/img/corporativos/letra3.jpeg", "/img/corporativos/letra4.jpeg"], description: "Descripción del proyecto..." },
   { id: 7, title: "Stickers", subtitle: "Creativo para cualquier superficie", image: "/img/corporativos/vin19.jpeg", gallery: ["/img/corporativos/stick1.jpeg", "/img/corporativos/stick4.jpeg", "/img/corporativos/stick3.jpeg", "/img/corporativos/stick2.jpeg"], description: "Descripción del proyecto..." },
-  { id: 8, title: "Acrílicos", subtitle: "Elegancia y acabado profesional", image: "/img/corporativos/acri.jpg", gallery: ["/img/corporativos/acri23.jpeg", "/img/corporativos/acri24.jpeg", "/img/corporativos/acri25.jpeg", "/img/corporativos/acri22.jpeg"], description: "Descripción del proyecto..." },
+    {
+    id: 8,
+    title: "Brandeo Vehicular Personalizado",
+    subtitle: "Personaliza tu marca",
+    image: "/img/brandeo/brandeo1.png",
+    gallery: ["/img/brandeo/brandeo10.jpeg", "/img/brandeo/brandeo3.jpg", "/img/brandeo/brandeo2.png", "/img/brandeo/brandeo8.jpg"],
+
+    description: "Descripción del proyecto...",
+  },
+  { id: 9, title: "Acrílicos", subtitle: "Elegancia y acabado profesional", image: "/img/corporativos/acri.jpg", gallery: ["/img/corporativos/acri23.jpeg", "/img/corporativos/acri24.jpeg", "/img/corporativos/acri25.jpeg", "/img/corporativos/acri22.jpeg"], description: "Descripción del proyecto..." },
 ];
 
 export default function Carousel() {

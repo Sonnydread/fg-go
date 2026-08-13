@@ -13,14 +13,14 @@ const images = [
   "/img/sliders/branding.jpeg",
   "/img/sliders/letrero.jpeg",
   "/img/sliders/lum2.jpeg",
+  "/img/brandeo/brandeo10.jpeg",
   "/img/sliders/mickey.jpeg",
   "/img/sliders/vin2.jpeg",
   "/img/sliders/vin7.jpeg",
   "/img/sliders/vin23.jpeg",
-  "/img/sliders/4x4.png",
-  "/img/sliders/super-alva.png",
-  "/img/sliders/bra14.jpeg",
-  "/img/sliders/bra28.jpeg",
+  "/img/brandeo/brandeo4.jpg",
+  "/img/brandeo/brandeo6.jpg",
+  "/img/brandeo/brandeo7.jpg",
 ];
 export function AutoScrollCarousel() {
   return (

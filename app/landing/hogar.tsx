@@ -20,7 +20,7 @@ const projects: Project[] = [
     title: "Cuadros", 
     subtitle: "Inmobiliaria", 
     image: "/img/hogar/cuadros.png",
-    gallery: ["/img/hogar/cuadro1.jpeg", "/img/hogar/cuadro2.jpeg", "/img/hogar/cuadro3.jpeg"]
+    gallery: ["/img/brandeo/brandeo9.png", "/img/hogar/cuadro1.jpeg", "/img/hogar/cuadro2.jpeg"]
   },
   { 
     id: 2, 
